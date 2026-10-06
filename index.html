@@ -1,371 +1,469 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ShalaMitra - School Digital Tools</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ShalaMitra | Balram Meena</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
+header{background:linear-gradient(135deg,#155eef,#6d5dfc);color:white;padding:28px 15px;text-align:center}
+.brand{font-size:30px;font-weight:800}
+.by{margin:6px 0 18px}
+.hero h1{margin:8px}
+.hero p{line-height:1.5}
+.search{display:flex;gap:8px;max-width:650px;margin:auto}
+.search input{flex:1;padding:13px;border:0;border-radius:12px;font-size:16px}
+.search button{border:0;border-radius:12px;padding:0 18px;font-weight:700}
+.container{max-width:1050px;margin:auto;padding:24px 14px}
+.title{text-align:center}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+.card,.panel{background:white;border-radius:18px;padding:20px;box-shadow:0 5px 20px #18213a12}
+.icon{font-size:30px}
+.card p{color:#667085;min-height:42px;line-height:1.45}
+.btn{border:0;border-radius:10px;background:#155eef;color:white;padding:11px 15px;font-weight:700;cursor:pointer}
+.panel{display:none;margin-top:22px}
+.panel.active{display:block}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.field label{display:block;font-weight:700;margin-bottom:6px}
+.field input{width:100%;padding:11px;border:1px solid #d5dbe7;border-radius:9px}
+.result{background:#f4f7ff;border-radius:12px;padding:14px;margin-top:15px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+footer{text-align:center;padding:25px;color:#667085}
 
-body{
-  font-family:Arial,sans-serif;
-  background:#f5f7fb;
-  color:#172033;
-}
-
-.header{
-  background:linear-gradient(135deg,#174ea6,#4285f4);
-  color:white;
-  padding:24px 18px 35px;
-  border-radius:0 0 28px 28px;
-}
-
-.top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  max-width:1000px;
-  margin:auto;
-}
-
-.logo{
-  font-size:27px;
-  font-weight:bold;
-}
-
-.tag{
-  font-size:12px;
-  margin-top:5px;
-  opacity:.9;
-}
-
-.hero{
-  max-width:1000px;
-  margin:30px auto 0;
-}
-
-.hero h1{
-  font-size:28px;
-  margin-bottom:10px;
-}
-
-.hero p{
-  font-size:15px;
-  line-height:1.5;
-}
-
-.search{
-  max-width:650px;
-  margin:22px auto 0;
-  background:white;
-  border-radius:14px;
-  padding:5px;
-  display:flex;
-  box-shadow:0 5px 20px rgba(0,0,0,.15);
-}
-
-.search input{
-  flex:1;
-  border:0;
-  outline:0;
-  padding:13px;
-  font-size:15px;
-}
-
-.search button{
-  border:0;
-  background:#174ea6;
-  color:white;
-  padding:0 18px;
-  border-radius:10px;
-  font-size:15px;
-}
-
-.container{
-  max-width:1000px;
-  margin:auto;
-  padding:25px 15px;
-}
-
-.title{
-  font-size:21px;
-  margin:10px 0 16px;
-}
-
-.tools{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:14px;
-}
-
-.card{
-  background:white;
-  border-radius:17px;
-  padding:20px 15px;
-  box-shadow:0 3px 14px rgba(0,0,0,.07);
-  border:1px solid #edf0f5;
-}
-
-.icon{
-  font-size:34px;
-  margin-bottom:10px;
-}
-
-.card h3{
-  font-size:17px;
-  margin-bottom:6px;
-}
-
-.card p{
-  color:#687386;
-  font-size:13px;
-  line-height:1.45;
-}
-
-.btn{
-  display:inline-block;
-  margin-top:13px;
-  padding:9px 13px;
-  background:#eef4ff;
-  color:#174ea6;
-  border-radius:9px;
-  text-decoration:none;
-  font-size:13px;
-  font-weight:bold;
-}
-
-.popular{
-  background:#fff8e6;
-  border:1px solid #ffe4a3;
-}
-
-.footer{
-  margin-top:25px;
-  background:#172033;
-  color:white;
-  text-align:center;
-  padding:25px 15px;
-  font-size:13px;
-}
-
-.footer p{
-  margin:6px;
-  opacity:.8;
-}
-
-@media(max-width:480px){
-  .tools{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .hero h1{
-    font-size:25px;
-  }
-
-  .logo{
-    font-size:23px;
-  }
+@media(max-width:600px){
+.search{flex-direction:column}
+.search button{padding:12px}
 }
 </style>
 </head>
 
 <body>
-<section class="hero">
-  <h1>आपका Digital School साथी 👋</h1>
 
-  <p>
-    MDM, Image, PDF और School के रोज़मर्रा के काम
-    एक ही जगह आसान तरीके से करें।
-  </p>
+<header>
+<div class="brand">🏫 ShalaMitra</div>
+<div class="by">Balram Meena • Akla, Khinvsar</div>
 
-  <div class="search">
-    <input
-      type="text"
-      id="searchBox"
-      placeholder="🔍 आप क्या करना चाहते हैं?"
-      onkeyup="searchTools()"
-    >
-    <button>Search</button>
-  </div>
-</section>
+<div class="hero">
+<h1>School Work का आसान Digital साथी 👋</h1>
+<p>MDM, Image, PDF और रोज़मर्रा के school tools — एक ही जगह।</p>
 
+<div class="search">
+<input id="search" placeholder="🔍 Tool खोजें..." oninput="findTools()">
+<button onclick="findTools()">Search</button>
+</div>
+</div>
 </header>
 
 <main class="container">
 
-<h2 class="title">⭐ सबसे ज्यादा उपयोग होने वाले</h2>
+<h2 class="title">⭐ Popular Tools</h2>
 
-<div class="tools">
+<div class="tools" id="cards">
 
-  <div class="card popular">
-    <div class="icon">🏫</div>
-    <h3>MDM+</h3>
-    <p>MDM calculation, bills, rates और monthly records.</p>
-    <a href="#" class="btn">Open MDM+</a>
-  </div>
-
-  <div class="card popular">
-    <div class="icon">🖼️</div>
-    <h3>Image KB / MB</h3>
-    <p>Photo को 20KB, 50KB, 100KB, 200KB आदि करें।</p>
-    <a href="#" class="btn">Open Tool</a>
-  </div>
-
-  <div class="card popular">
-    <div class="icon">📄</div>
-    <h3>PDF Compressor</h3>
-    <p>PDF का size MB से KB में कम करें।</p>
-    <a href="#" class="btn">Open Tool</a>
-  </div>
-
-  <div class="card popular">
-    <div class="icon">📷</div>
-    <h3>Passport Photo</h3>
-    <p>Passport size photo आसानी से तैयार करें।</p>
-    <a href="#" class="btn">Open Tool</a>
-  </div>
-
+<div class="card" data-key="mdm">
+<div class="icon">🏫</div>
+<h3>MDM+</h3>
+<p>Student count, rate और MDM bill calculation.</p>
+<button class="btn" onclick="openTool('mdm')">Open MDM+</button>
 </div>
 
-<h2 class="title" style="margin-top:30px;">🏫 School Tools</h2>
-
-<div class="tools">
-
-  <div class="card">
-    <div class="icon">🧾</div>
-    <h3>School Documents</h3>
-    <p>School applications, formats और जरूरी documents.</p>
-    <a href="#" class="btn">Open</a>
-  </div>
-
-  <div class="card">
-    <div class="icon">🧮</div>
-    <h3>School Calculators</h3>
-    <p>School से जुड़े अलग-अलग calculations करें।</p>
-    <a href="#" class="btn">Open</a>
-  </div>
-
-  <div class="card">
-    <div class="icon">📊</div>
-    <h3>Reports</h3>
-    <p>Monthly और school records को व्यवस्थित करें।</p>
-    <a href="#" class="btn">Open</a>
-  </div>
-
-  <div class="card">
-    <div class="icon">📚</div>
-    <h3>School Resources</h3>
-    <p>शिक्षकों के लिए उपयोगी सामग्री और tools.</p>
-    <a href="#" class="btn">Open</a>
-  </div>
-
+<div class="card" data-key="image kb mb compress">
+<div class="icon">🖼️</div>
+<h3>Image KB / MB</h3>
+<p>Photo का size कम करें और download करें।</p>
+<button class="btn" onclick="openTool('image')">Open Tool</button>
 </div>
-<h2 class="title" style="margin-top:30px;">🖼️ Image Tools</h2>
 
-<div class="tools">
+<div class="card" data-key="pdf jpg merge">
+<div class="icon">📄</div>
+<h3>PDF Tools</h3>
+<p>JPG to PDF और PDF merge करें।</p>
+<button class="btn" onclick="openTool('pdf')">Open Tool</button>
+</div>
 
-  <div class="card">
-    <div class="icon">⬇️</div>
-    <h3>Reduce Image Size</h3>
-    <p>Image को अपनी जरूरत के KB में compress करें।</p>
-    <a href="#" class="btn">Open</a>
-  </div>
-
-  <div class="card">
-    <div class="icon">📐</div>
-    <h3>Resize Image</h3>
-    <p>Photo की height और width बदलें।</p>
-    <a href="#" class="btn">Open</a>
-  </div>
-
-  <div class="card">
-    <div class="icon">🔄</div>
-    <h3>Image Converter</h3>
-    <p>JPG, PNG और WebP में convert करें।</p>
-    <a href="#" class="btn">Open</a>
-  </div>
-
-  <div class="card">
-    <div class="icon">✂️</div>
-    <h3>Crop Image</h3>
-    <p>Photo को अपनी जरूरत के अनुसार crop करें।</p>
-    <a href="#" class="btn">Open</a>
-  </div>
+<div class="card" data-key="passport photo">
+<div class="icon">📷</div>
+<h3>Passport Photo</h3>
+<p>Passport-size photo तैयार करें।</p>
+<button class="btn" onclick="openTool('passport')">Open Tool</button>
+</div>
 
 </div>
 
 
-<h2 class="title" style="margin-top:30px;">📄 PDF Tools</h2>
+<section id="mdm" class="panel">
 
-<div class="tools">
+<h2>🏫 MDM+</h2>
 
-  <div class="card">
-    <div class="icon">📉</div>
-    <h3>Compress PDF</h3>
-    <p>PDF file का size कम करें।</p>
-    <a href="#" class="btn">Open</a>
-  </div>
+<div class="row">
 
-  <div class="card">
-    <div class="icon">🖇️</div>
-    <h3>Merge PDF</h3>
-    <p>कई PDF को एक PDF में जोड़ें।</p>
-    <a href="#" class="btn">Open</a>
-  </div>
+<div class="field">
+<label>Primary Students</label>
+<input id="p" type="number" value="0">
+</div>
 
-  <div class="card">
-    <div class="icon">✂️</div>
-    <h3>Split PDF</h3>
-    <p>PDF को अलग-अलग files में बाँटें।</p>
-    <a href="#" class="btn">Open</a>
-  </div>
+<div class="field">
+<label>Upper Primary Students</label>
+<input id="u" type="number" value="0">
+</div>
 
-  <div class="card">
-    <div class="icon">🖼️</div>
-    <h3>JPG to PDF</h3>
-    <p>Photos को एक PDF में बदलें।</p>
-    <a href="#" class="btn">Open</a>
-  </div>
+<div class="field">
+<label>Primary Rate ₹</label>
+<input id="pr" type="number" step=".01" value="6.78">
+</div>
+
+<div class="field">
+<label>Upper Primary Rate ₹</label>
+<input id="ur" type="number" step=".01" value="10.17">
+</div>
+
+<div class="field">
+<label>Days</label>
+<input id="days" type="number" value="1">
+</div>
 
 </div>
+
+<div class="actions">
+<button class="btn" onclick="calc()">Calculate Bill</button>
+</div>
+
+<div id="mdmResult" class="result"></div>
+
+</section>
+
+
+<section id="image" class="panel">
+
+<h2>🖼️ Image KB / MB Reducer</h2>
+
+<input id="img" type="file" accept="image/*">
+
+<div class="row" style="margin-top:12px">
+
+<div class="field">
+<label>Target KB</label>
+<input id="kb" type="number" value="100">
+</div>
+
+<div class="field">
+<label>Max Width</label>
+<input id="mw" type="number" value="1600">
+</div>
+
+</div>
+
+<div class="actions">
+<button class="btn" onclick="compress()">Compress & Download</button>
+</div>
+
+<div id="istatus" class="result"></div>
+
+</section>
+
+
+<section id="passport" class="panel">
+
+<h2>📷 Passport Photo</h2>
+
+<input id="pass" type="file" accept="image/*">
+
+<div class="row" style="margin-top:12px">
+
+<div class="field">
+<label>Width</label>
+<input id="pw" type="number" value="354">
+</div>
+
+<div class="field">
+<label>Height</label>
+<input id="ph" type="number" value="472">
+</div>
+
+</div>
+
+<div class="actions">
+<button class="btn" onclick="passport()">Create & Download</button>
+</div>
+
+</section>
+
+
+<section id="pdf" class="panel">
+
+<h2>📄 JPG → PDF</h2>
+
+<input id="pics" type="file" accept="image/*" multiple>
+
+<div class="actions">
+<button class="btn" onclick="jpgPdf()">Create PDF</button>
+</div>
+
+<div class="result">
+PDF library internet से load होती है, इसलिए PDF tool के लिए internet चालू रखें।
+</div>
+
+</section>
 
 </main>
 
-<footer class="footer">
-  <strong>🏫 ShalaMitra</strong>
-  <p>School Work • Digital Tools • Easy Solutions</p>
-  <p>© 2026 ShalaMitra</p>
+
+<footer>
+<b>🏫 ShalaMitra</b><br>
+Balram Meena • Akla, Khinvsar<br>
+© 2026 ShalaMitra
 </footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+
 <script>
 
-function searchTools(){
+function openTool(id){
 
-  let input = document
-    .getElementById("searchBox")
-    .value
-    .toLowerCase();
+document.querySelectorAll('.panel')
+.forEach(x=>x.classList.remove('active'));
 
-  let cards = document
-    .querySelectorAll(".card");
+let e=document.getElementById(id);
 
-  cards.forEach(function(card){
+e.classList.add('active');
 
-    let text = card
-      .innerText
-      .toLowerCase();
+e.scrollIntoView({behavior:'smooth'});
 
-    if(text.includes(input)){
-      card.style.display = "";
-    }else{
-      card.style.display = "none";
-    }
+}
 
-  });
+
+function findTools(){
+
+let q=document
+.getElementById('search')
+.value
+.toLowerCase();
+
+document
+.querySelectorAll('#cards .card')
+.forEach(c=>
+
+c.style.display=
+(!q ||
+c.innerText.toLowerCase().includes(q) ||
+c.dataset.key.includes(q))
+?'':'none'
+
+);
+
+}
+
+
+function calc(){
+
+let p=+document.getElementById('p').value||0;
+
+let u=+document.getElementById('u').value||0;
+
+let pr=+document.getElementById('pr').value||0;
+
+let ur=+document.getElementById('ur').value||0;
+
+let d=+document.getElementById('days').value||0;
+
+let a=p*pr*d;
+
+let b=u*ur*d;
+
+document.getElementById('mdmResult').innerHTML=
+
+'<b>Primary:</b> ₹'+a.toFixed(2)+
+'<br><b>Upper Primary:</b> ₹'+b.toFixed(2)+
+'<br><hr><b>Total: ₹'+(a+b).toFixed(2)+'</b>';
+
+}
+
+
+function imgLoad(f){
+
+return new Promise((ok,no)=>{
+
+let i=new Image();
+
+i.onload=()=>ok(i);
+
+i.onerror=no;
+
+i.src=URL.createObjectURL(f);
+
+});
+
+}
+
+
+function dl(blob,name){
+
+let a=document.createElement('a');
+
+a.href=URL.createObjectURL(blob);
+
+a.download=name;
+
+a.click();
+
+}
+
+
+async function compress(){
+
+let f=document.getElementById('img').files[0];
+
+if(!f)
+return alert('पहले image चुनें');
+
+let im=await imgLoad(f);
+
+let w=im.width;
+
+let h=im.height;
+
+let m=+document.getElementById('mw').value;
+
+if(w>m){
+
+h=Math.round(h*m/w);
+
+w=m;
+
+}
+
+let c=document.createElement('canvas');
+
+c.width=w;
+
+c.height=h;
+
+c.getContext('2d').drawImage(im,0,0,w,h);
+
+let q=.85;
+
+let b=await new Promise(r=>
+c.toBlob(r,'image/jpeg',q)
+);
+
+let target=
+(+document.getElementById('kb').value||100)*1024;
+
+while(b.size>target && q>.1){
+
+q-=.05;
+
+b=await new Promise(r=>
+c.toBlob(r,'image/jpeg',q)
+);
+
+}
+
+document.getElementById('istatus').innerText=
+'New size: '+(b.size/1024).toFixed(1)+' KB';
+
+dl(b,'shalamitra-image.jpg');
+
+}
+
+
+async function passport(){
+
+let f=document.getElementById('pass').files[0];
+
+if(!f)
+return alert('पहले photo चुनें');
+
+let im=await imgLoad(f);
+
+let w=+document.getElementById('pw').value;
+
+let h=+document.getElementById('ph').value;
+
+let c=document.createElement('canvas');
+
+c.width=w;
+
+c.height=h;
+
+let x=c.getContext('2d');
+
+let s=Math.max(w/im.width,h/im.height);
+
+let nw=im.width*s;
+
+let nh=im.height*s;
+
+x.drawImage(
+im,
+(w-nw)/2,
+(h-nh)/2,
+nw,
+nh
+);
+
+c.toBlob(
+b=>dl(b,'passport-photo.jpg'),
+'image/jpeg',
+.92
+);
+
+}
+
+
+async function jpgPdf(){
+
+if(!window.PDFLib)
+return alert('PDF library load नहीं हुई');
+
+let fs=[
+...document.getElementById('pics').files
+];
+
+if(!fs.length)
+return alert('पहले images चुनें');
+
+let pdf=
+await PDFLib.PDFDocument.create();
+
+for(let f of fs){
+
+let bytes=
+new Uint8Array(
+await f.arrayBuffer()
+);
+
+let im=
+await pdf.embedJpg(bytes)
+.catch(()=>null);
+
+if(!im)continue;
+
+let page=
+pdf.addPage([
+im.width,
+im.height
+]);
+
+page.drawImage(im,{
+x:0,
+y:0,
+width:im.width,
+height:im.height
+});
+
+}
+
+dl(
+new Blob(
+[await pdf.save()],
+{type:'application/pdf'}
+),
+'shalamitra-images.pdf'
+);
 
 }
 
