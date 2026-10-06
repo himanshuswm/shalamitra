@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShalaMitra - School Digital Tools</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#f5f7fb;
+  color:#172033;
+}
+
+.header{
+  background:linear-gradient(135deg,#174ea6,#4285f4);
+  color:white;
+  padding:24px 18px 35px;
+  border-radius:0 0 28px 28px;
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  max-width:1000px;
+  margin:auto;
+}
+
+.logo{
+  font-size:27px;
+  font-weight:bold;
+}
+
+.tag{
+  font-size:12px;
+  margin-top:5px;
+  opacity:.9;
+}
+
+.hero{
+  max-width:1000px;
+  margin:30px auto 0;
+}
+
+.hero h1{
+  font-size:28px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  font-size:15px;
+  line-height:1.5;
+}
+
+.search{
+  max-width:650px;
+  margin:22px auto 0;
+  background:white;
+  border-radius:14px;
+  padding:5px;
+  display:flex;
+  box-shadow:0 5px 20px rgba(0,0,0,.15);
+}
+
+.search input{
+  flex:1;
+  border:0;
+  outline:0;
+  padding:13px;
+  font-size:15px;
+}
+
+.search button{
+  border:0;
+  background:#174ea6;
+  color:white;
+  padding:0 18px;
+  border-radius:10px;
+  font-size:15px;
+}
+
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:25px 15px;
+}
+
+.title{
+  font-size:21px;
+  margin:10px 0 16px;
+}
+
+.tools{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
+.card{
+  background:white;
+  border-radius:17px;
+  padding:20px 15px;
+  box-shadow:0 3px 14px rgba(0,0,0,.07);
+  border:1px solid #edf0f5;
+}
+
+.icon{
+  font-size:34px;
+  margin-bottom:10px;
+}
+
+.card h3{
+  font-size:17px;
+  margin-bottom:6px;
+}
+
+.card p{
+  color:#687386;
+  font-size:13px;
+  line-height:1.45;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:13px;
+  padding:9px 13px;
+  background:#eef4ff;
+  color:#174ea6;
+  border-radius:9px;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:bold;
+}
+
+.popular{
+  background:#fff8e6;
+  border:1px solid #ffe4a3;
+}
+
+.footer{
+  margin-top:25px;
+  background:#172033;
+  color:white;
+  text-align:center;
+  padding:25px 15px;
+  font-size:13px;
+}
+
+.footer p{
+  margin:6px;
+  opacity:.8;
+}
+
+@media(max-width:480px){
+  .tools{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .hero h1{
+    font-size:25px;
+  }
+
+  .logo{
+    font-size:23px;
+  }
+}
+</style>
+</head>
+
+<body>
+<section class="hero">
+  <h1>आपका Digital School साथी 👋</h1>
+
+  <p>
+    MDM, Image, PDF और School के रोज़मर्रा के काम
+    एक ही जगह आसान तरीके से करें।
+  </p>
+
+  <div class="search">
+    <input
+      type="text"
+      id="searchBox"
+      placeholder="🔍 आप क्या करना चाहते हैं?"
+      onkeyup="searchTools()"
+    >
+    <button>Search</button>
+  </div>
+</section>
+
+</header>
+
+<main class="container">
+
+<h2 class="title">⭐ सबसे ज्यादा उपयोग होने वाले</h2>
+
+<div class="tools">
+
+  <div class="card popular">
+    <div class="icon">🏫</div>
+    <h3>MDM+</h3>
+    <p>MDM calculation, bills, rates और monthly records.</p>
+    <a href="#" class="btn">Open MDM+</a>
+  </div>
+
+  <div class="card popular">
+    <div class="icon">🖼️</div>
+    <h3>Image KB / MB</h3>
+    <p>Photo को 20KB, 50KB, 100KB, 200KB आदि करें।</p>
+    <a href="#" class="btn">Open Tool</a>
+  </div>
+
+  <div class="card popular">
+    <div class="icon">📄</div>
+    <h3>PDF Compressor</h3>
+    <p>PDF का size MB से KB में कम करें।</p>
+    <a href="#" class="btn">Open Tool</a>
+  </div>
+
+  <div class="card popular">
+    <div class="icon">📷</div>
+    <h3>Passport Photo</h3>
+    <p>Passport size photo आसानी से तैयार करें।</p>
+    <a href="#" class="btn">Open Tool</a>
+  </div>
+
+</div>
+
+<h2 class="title" style="margin-top:30px;">🏫 School Tools</h2>
+
+<div class="tools">
+
+  <div class="card">
+    <div class="icon">🧾</div>
+    <h3>School Documents</h3>
+    <p>School applications, formats और जरूरी documents.</p>
+    <a href="#" class="btn">Open</a>
+  </div>
+
+  <div class="card">
+    <div class="icon">🧮</div>
+    <h3>School Calculators</h3>
+    <p>School से जुड़े अलग-अलग calculations करें।</p>
+    <a href="#" class="btn">Open</a>
+  </div>
+
+  <div class="card">
+    <div class="icon">📊</div>
+    <h3>Reports</h3>
+    <p>Monthly और school records को व्यवस्थित करें।</p>
+    <a href="#" class="btn">Open</a>
+  </div>
+
+  <div class="card">
+    <div class="icon">📚</div>
+    <h3>School Resources</h3>
+    <p>शिक्षकों के लिए उपयोगी सामग्री और tools.</p>
+    <a href="#" class="btn">Open</a>
+  </div>
+
+</div>
+<h2 class="title" style="margin-top:30px;">🖼️ Image Tools</h2>
+
+<div class="tools">
+
+  <div class="card">
+    <div class="icon">⬇️</div>
+    <h3>Reduce Image Size</h3>
+    <p>Image को अपनी जरूरत के KB में compress करें।</p>
+    <a href="#" class="btn">Open</a>
+  </div>
+
+  <div class="card">
+    <div class="icon">📐</div>
+    <h3>Resize Image</h3>
+    <p>Photo की height और width बदलें।</p>
+    <a href="#" class="btn">Open</a>
+  </div>
+
+  <div class="card">
+    <div class="icon">🔄</div>
+    <h3>Image Converter</h3>
+    <p>JPG, PNG और WebP में convert करें।</p>
+    <a href="#" class="btn">Open</a>
+  </div>
+
+  <div class="card">
+    <div class="icon">✂️</div>
+    <h3>Crop Image</h3>
+    <p>Photo को अपनी जरूरत के अनुसार crop करें।</p>
+    <a href="#" class="btn">Open</a>
+  </div>
+
+</div>
+
+
+<h2 class="title" style="margin-top:30px;">📄 PDF Tools</h2>
+
+<div class="tools">
+
+  <div class="card">
+    <div class="icon">📉</div>
+    <h3>Compress PDF</h3>
+    <p>PDF file का size कम करें।</p>
+    <a href="#" class="btn">Open</a>
+  </div>
+
+  <div class="card">
+    <div class="icon">🖇️</div>
+    <h3>Merge PDF</h3>
+    <p>कई PDF को एक PDF में जोड़ें।</p>
+    <a href="#" class="btn">Open</a>
+  </div>
+
+  <div class="card">
+    <div class="icon">✂️</div>
+    <h3>Split PDF</h3>
+    <p>PDF को अलग-अलग files में बाँटें।</p>
+    <a href="#" class="btn">Open</a>
+  </div>
+
+  <div class="card">
+    <div class="icon">🖼️</div>
+    <h3>JPG to PDF</h3>
+    <p>Photos को एक PDF में बदलें।</p>
+    <a href="#" class="btn">Open</a>
+  </div>
+
+</div>
+
+</main>
+
+<footer class="footer">
+  <strong>🏫 ShalaMitra</strong>
+  <p>School Work • Digital Tools • Easy Solutions</p>
+  <p>© 2026 ShalaMitra</p>
+</footer>
+<script>
+
+function searchTools(){
+
+  let input = document
+    .getElementById("searchBox")
+    .value
+    .toLowerCase();
+
+  let cards = document
+    .querySelectorAll(".card");
+
+  cards.forEach(function(card){
+
+    let text = card
+      .innerText
+      .toLowerCase();
+
+    if(text.includes(input)){
+      card.style.display = "";
+    }else{
+      card.style.display = "none";
+    }
+
+  });
+
+}
+
+</script>
+
+</body>
+</html>
