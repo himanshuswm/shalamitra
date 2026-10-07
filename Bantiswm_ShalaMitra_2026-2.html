@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#4f46e5">
+<title>Bantiswm | ShalaMitra 2026</title>
+
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script type="module">
+import * as pdfjsLib from "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.mjs";
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+"https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs";
+window.pdfjsLib = pdfjsLib;
+</script>
+
+<style>
+:root{
+ --primary:#5b5cf0;--primary2:#7c3aed;--dark:#111827;--muted:#64748b;
+ --bg:#f4f7ff;--card:#fff;--line:#e5e7eb;--green:#059669;--red:#dc2626;
+ --shadow:0 12px 35px rgba(31,41,55,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--dark)}
+button,input{font:inherit}
+.topbar{
+ position:relative;overflow:hidden;color:#fff;padding:42px 18px 58px;
+ background:linear-gradient(135deg,#312e81 0%,#5b5cf0 48%,#7c3aed 100%);
+}
+.topbar:before,.topbar:after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.10)}
+.topbar:before{width:240px;height:240px;right:-80px;top:-100px}
+.topbar:after{width:180px;height:180px;left:-70px;bottom:-100px}
+.brand-wrap{position:relative;z-index:1;max-width:1150px;margin:auto;text-align:center}
+.brand{
+ font-size:clamp(38px,9vw,72px);font-weight:900;letter-spacing:2px;
+ text-shadow:0 5px 18px rgba(0,0,0,.20);line-height:1;
+}
+.brand-sub{margin-top:12px;font-size:16px;opacity:.92}
+.hero{
+ max-width:850px;margin:24px auto 0;padding:24px;border:1px solid rgba(255,255,255,.22);
+ background:rgba(255,255,255,.10);backdrop-filter:blur(10px);border-radius:24px;
+}
+.hero h1{margin:0 0 10px;font-size:clamp(24px,5vw,40px)}
+.hero p{margin:0;line-height:1.7;opacity:.94}
+.nav{
+ position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);
+ border-bottom:1px solid var(--line);padding:10px 12px;
+}
+.nav-inner{max-width:1150px;margin:auto;display:flex;gap:8px;overflow:auto}
+.nav button{
+ border:0;background:#eef2ff;color:#3730a3;padding:10px 16px;border-radius:999px;
+ font-weight:800;white-space:nowrap;cursor:pointer
+}
+.nav button:hover{background:#dddfff}
+.container{max-width:1150px;margin:auto;padding:28px 14px 50px}
+.section-heading{text-align:center;margin:8px 0 22px}
+.section-heading h2{margin:0;font-size:30px}.section-heading p{color:var(--muted)}
+.dashboard{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px
+}
+.card{
+ background:var(--card);border:1px solid rgba(229,231,235,.9);border-radius:22px;
+ padding:22px;box-shadow:var(--shadow);transition:.2s
+}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 42px rgba(31,41,55,.14)}
+.tool-icon{font-size:42px}.card h3{margin:10px 0 7px}.card p{color:var(--muted);line-height:1.55}
+.btn{
+ border:0;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--primary2));
+ color:#fff;padding:12px 17px;font-weight:800;cursor:pointer;box-shadow:0 7px 16px rgba(91,92,240,.20)
+}
+.btn:hover{filter:brightness(1.05)}.btn.gray{background:#64748b}.btn.green{background:#059669}.btn.red{background:#dc2626}
+.panel{
+ display:none;margin-top:26px;background:#fff;border-radius:24px;padding:24px;
+ box-shadow:var(--shadow);border:1px solid var(--line)
+}
+.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.panel-head h2{margin:0;font-size:28px}.badge{padding:8px 12px;border-radius:999px;background:#eef2ff;color:#4338ca;font-weight:800}
+.section-title{
+ margin:28px 0 14px;border-left:5px solid var(--primary);padding:10px 12px;
+ background:#f8f8ff;border-radius:0 12px 12px 0
+}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.field label{display:block;font-weight:800;margin-bottom:7px}.field input{
+ width:100%;padding:12px;border:1px solid #d9deea;border-radius:11px;background:#fff;outline:none
+}.field input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(91,92,240,.10)}
+.actions{display:flex;flex-wrap:wrap;gap:9px;margin:16px 0}
+.status-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:16px}
+.stat{padding:15px;border-radius:16px;background:#f7f8ff;border:1px solid #e4e7ff}
+.stat small{color:var(--muted);display:block}.stat strong{font-size:22px;display:block;margin-top:4px}
+.match{color:var(--green)}.check{color:var(--red)}
+.table-wrap{overflow:auto;border-radius:14px}
+table{width:100%;border-collapse:collapse;min-width:650px}
+th,td{border:1px solid #e1e5ee;padding:10px;text-align:left}th{background:#eef2ff;color:#30346b}
+.total-box{margin-top:18px;padding:18px;border-radius:17px;background:linear-gradient(135deg,#eef2ff,#f5f3ff);font-size:20px;font-weight:900}
+.notice{padding:12px 15px;background:#fff8e8;border:1px solid #f5d48a;border-radius:12px;color:#7a5710;margin-top:14px}
+.file-card{background:#f8faff;border:1px dashed #b7c0d4;border-radius:18px;padding:20px}
+.file-card input[type=file]{width:100%;margin:10px 0}
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.result{margin-top:14px;padding:14px;border-radius:13px;background:#f5f7ff;color:#334155}
+.footer{padding:35px 15px;text-align:center;color:#64748b}.footer b{color:#4338ca}
+.hidden{display:none!important}
+@media(max-width:600px){
+ .topbar{padding-top:32px}.hero{padding:19px}.panel{padding:17px}.container{padding:20px 10px}
+ .brand{font-size:48px}
+}
+@media print{
+ .topbar,.nav,.dashboard,.section-heading,.actions,.footer{display:none!important}
+ .panel{display:block!important;box-shadow:none;border:0}
+ body{background:#fff}
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+ <div class="brand-wrap">
+  <div class="brand">Bantiswm</div>
+  <div class="brand-sub">Digital School Work • ShalaMitra 2026</div>
+  <div class="hero">
+   <h1>🏫 School Work का Smart Digital साथी</h1>
+   <p>MDM Bill • PDF Converter • PDF Compressor • Image Tools — सभी जरूरी school utilities एक ही जगह।</p>
+  </div>
+ </div>
+</header>
+
+<nav class="nav">
+ <div class="nav-inner">
+  <button onclick="goHome()">🏠 Home</button>
+  <button onclick="openTool('mdm')">🍱 MDM 2026</button>
+  <button onclick="openTool('pdf')">📄 PDF Tools</button>
+  <button onclick="openTool('image')">🖼️ Image Tools</button>
+ </div>
+</nav>
+
+<main class="container">
+
+<section id="home">
+ <div class="section-heading">
+  <h2>✨ ShalaMitra 2026</h2>
+  <p>School का रोज़ का काम आसान, तेज़ और व्यवस्थित बनाएं।</p>
+ </div>
+
+ <div class="dashboard">
+  <div class="card">
+   <div class="tool-icon">🍱</div><h3>MDM 2026</h3>
+   <p>Beneficiary days डालते ही सामग्री, फल-सब्जी, पिसाई, गैस और Grand Total automatic calculate करें।</p>
+   <button class="btn" onclick="openTool('mdm')">Open MDM →</button>
+  </div>
+  <div class="card">
+   <div class="tool-icon">📄</div><h3>PDF Studio</h3>
+   <p>Compress, Merge, Split, PDF → Image और Image → PDF जैसे काम एक जगह करें।</p>
+   <button class="btn" onclick="openTool('pdf')">Open PDF Tools →</button>
+  </div>
+  <div class="card">
+   <div class="tool-icon">🖼️</div><h3>Image Studio</h3>
+   <p>Photo compress, resize और passport-size photo तुरंत तैयार करें।</p>
+   <button class="btn" onclick="openTool('image')">Open Image Tools →</button>
+  </div>
+ </div>
+</section>
+
+<section id="mdm" class="panel">
+ <div class="panel-head">
+  <div><h2>🍱 MDM 2026 Automatic Bill</h2><p class="small">आपके तैयार MDM Excel की calculation structure के अनुसार।</p></div>
+  <span class="badge">AUTO CALCULATION</span>
+ </div>
+
+ <h3 class="section-title">1. Beneficiary Student-Days</h3>
+ <div class="grid">
+  <div class="field"><label>Primary Student-Days</label><input id="mdmPrimary" type="number" min="0" value="368" oninput="calculateMDM()"></div>
+  <div class="field"><label>Upper Primary Student-Days</label><input id="mdmUpper" type="number" min="0" value="0" oninput="calculateMDM()"></div>
+  <div class="field"><label>Fruit Student-Days</label><input id="mdmFruit" type="number" min="0" value="72" oninput="calculateMDM()"></div>
+  <div class="field"><label>Wheat for Pisai (kg)</label><input id="mdmWheat" type="number" min="0" step="0.01" value="21.6" oninput="calculateMDM()"></div>
+ </div>
+
+ <h3 class="section-title">2. Rate Settings</h3>
+ <div class="grid">
+  <div class="field"><label>Primary Material Cost ₹</label><input id="primaryRate" type="number" step="0.01" value="6.78" oninput="calculateMDM()"></div>
+  <div class="field"><label>Upper Primary Material Cost ₹</label><input id="upperRate" type="number" step="0.01" value="10.17" oninput="calculateMDM()"></div>
+  <div class="field"><label>Dal ₹/kg</label><input id="rateDal" type="number" value="100" oninput="calculateMDM()"></div>
+  <div class="field"><label>Sabji ₹/kg</label><input id="rateSabji" type="number" value="30" oninput="calculateMDM()"></div>
+  <div class="field"><label>Oil/Ghee ₹/kg</label><input id="rateOil" type="number" value="140" oninput="calculateMDM()"></div>
+  <div class="field"><label>Haldi ₹/kg</label><input id="rateHaldi" type="number" value="200" oninput="calculateMDM()"></div>
+  <div class="field"><label>Mirch ₹/kg</label><input id="rateMirch" type="number" value="200" oninput="calculateMDM()"></div>
+  <div class="field"><label>Dhaniya ₹/kg</label><input id="rateDhaniya" type="number" value="250" oninput="calculateMDM()"></div>
+  <div class="field"><label>Namak ₹/kg</label><input id="rateNamak" type="number" value="20" oninput="calculateMDM()"></div>
+  <div class="field"><label>Jeera ₹/kg</label><input id="rateJeera" type="number" value="200" oninput="calculateMDM()"></div>
+  <div class="field"><label>Lahsun ₹/kg</label><input id="rateLahsun" type="number" value="100" oninput="calculateMDM()"></div>
+  <div class="field"><label>Fruit ₹/kg</label><input id="rateFruit" type="number" value="35" oninput="calculateMDM()"></div>
+  <div class="field"><label>Gas Cylinder ₹</label><input id="gasRate" type="number" value="950" oninput="calculateMDM()"></div>
+  <div class="field"><label>Gas Student-Days/Cylinder</label><input id="gasNorm" type="number" value="1200" oninput="calculateMDM()"></div>
+  <div class="field"><label>Pisai ₹/kg</label><input id="pisaiRate" type="number" value="3" oninput="calculateMDM()"></div>
+ </div>
+
+ <div class="actions no-print">
+  <button class="btn" onclick="calculateMDM()">🔄 Calculate MDM</button>
+  <button class="btn gray" onclick="window.print()">🖨️ Print / PDF</button>
+ </div>
+ <div id="mdmOutput"></div>
+</section>
+
+<section id="pdf" class="panel">
+ <div class="panel-head"><div><h2>📄 PDF Studio</h2><p class="small">PDF के सभी जरूरी काम एक जगह।</p></div><span class="badge">PRIVATE • BROWSER TOOL</span></div>
+
+ <div class="tool-grid">
+  <div class="file-card"><h3>📉 PDF Compressor</h3><p>PDF size कम करें।</p><input id="pdfCompressFile" type="file" accept="application/pdf"><div class="field"><label>Target KB</label><input id="pdfTargetKB" type="number" value="500" min="50"></div><div class="actions"><button class="btn" onclick="compressPDF()">Compress PDF</button></div></div>
+
+  <div class="file-card"><h3>🔗 PDF Merge</h3><p>कई PDF को एक PDF में जोड़ें।</p><input id="pdfMergeFiles" type="file" accept="application/pdf" multiple><div class="actions"><button class="btn" onclick="mergePDF()">Merge PDF</button></div></div>
+
+  <div class="file-card"><h3>✂️ PDF Split</h3><p>किसी एक page को अलग PDF बनाएं।</p><input id="pdfSplitFile" type="file" accept="application/pdf"><div class="field"><label>Page Number</label><input id="splitPage" type="number" value="1" min="1"></div><div class="actions"><button class="btn" onclick="splitPDF()">Split Page</button></div></div>
+
+  <div class="file-card"><h3>🖼️ PDF → Image</h3><p>PDF pages को JPG में बदलें।</p><input id="pdfImageFile" type="file" accept="application/pdf"><div class="actions"><button class="btn" onclick="pdfToImage()">Convert to JPG</button></div></div>
+
+  <div class="file-card"><h3>📑 Image → PDF</h3><p>एक या कई images से PDF बनाएं।</p><input id="imagePDFfiles" type="file" accept="image/*" multiple><div class="actions"><button class="btn" onclick="imageToPDF()">Create PDF</button></div></div>
+ </div>
+ <div id="pdfStatus" class="result">PDF result यहाँ दिखाई देगा।</div>
+</section>
+
+<section id="image" class="panel">
+ <div class="panel-head"><div><h2>🖼️ Image Studio</h2><p class="small">Photo compression, resizing और passport photo.</p></div><span class="badge">FAST IMAGE TOOLS</span></div>
+
+ <div class="tool-grid">
+  <div class="file-card"><h3>📉 Image Compressor</h3><p>Target KB के अनुसार photo compress करें।</p><input id="imageFile" type="file" accept="image/*"><div class="grid"><div class="field"><label>Target KB</label><input id="targetKB" type="number" value="100" min="10"></div><div class="field"><label>Maximum Width</label><input id="maxWidth" type="number" value="1600"></div></div><div class="actions"><button class="btn" onclick="compressImage()">Compress & Download</button></div><div id="imageStatus" class="result"></div></div>
+
+  <div class="file-card"><h3>📐 Image Resize</h3><p>Photo को exact width और height में बदलें।</p><input id="resizeFile" type="file" accept="image/*"><div class="grid"><div class="field"><label>Width</label><input id="resizeWidth" type="number" value="800"></div><div class="field"><label>Height</label><input id="resizeHeight" type="number" value="600"></div></div><div class="actions"><button class="btn" onclick="resizeImage()">Resize & Download</button></div></div>
+
+  <div class="file-card"><h3>📷 Passport Photo</h3><p>Passport-size crop और download.</p><input id="passportFile" type="file" accept="image/*"><div class="grid"><div class="field"><label>Width</label><input id="passportWidth" type="number" value="354"></div><div class="field"><label>Height</label><input id="passportHeight" type="number" value="472"></div></div><div class="actions"><button class="btn" onclick="passportPhoto()">Create Passport Photo</button></div></div>
+ </div>
+</section>
+
+</main>
+
+<footer class="footer"><b>✦ Bantiswm • ShalaMitra 2026</b><br>Balram Meena • Akla, Khinvsar<br><span>School Work made simpler.</span></footer>
+
+<script>
+function goHome(){document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));window.scrollTo({top:0,behavior:"smooth"})}
+function openTool(id){document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));const p=document.getElementById(id);if(p){p.classList.add("active");setTimeout(()=>p.scrollIntoView({behavior:"smooth",block:"start"}),30)}}
+function n(id){const e=document.getElementById(id);return e?Number(e.value)||0:0}
+function money(x){return "₹"+Number(x).toFixed(0)}
+function kg(x){return Number(x).toFixed(4)}
+function pct(x){return Number(x).toFixed(1)+"%"}
+
+function calculateMDM(){
+ const p=n("mdmPrimary"),u=n("mdmUpper"),fd=n("mdmFruit"),w=n("mdmWheat");
+ const available=p*n("primaryRate")+u*n("upperRate");
+ const r={dal:n("rateDal"),sabji:n("rateSabji"),oil:n("rateOil"),haldi:n("rateHaldi"),mirch:n("rateMirch"),dhaniya:n("rateDhaniya"),namak:n("rateNamak"),jeera:n("rateJeera"),lahsun:n("rateLahsun"),fruit:n("rateFruit")};
+ const q={dal:p*.02+u*.03,sabji:p*.045+u*.07,oil:(p+u)*.005,haldi:(p+u)*.00075,mirch:(p+u)*.00075,dhaniya:(p+u)*.00075,namak:(p+u)*.002,jeera:(p+u)*.0004,lahsun:(p+u)*.00125,fruit:fd*.125};
+ const b={};Object.keys(r).forEach(k=>b[k]=Math.round(q[k]*r[k]));
+ const pisai=Math.round(w*n("pisaiRate"));
+ const gas=Math.round(((p+u)/(n("gasNorm")||1200))*n("gasRate"));
+ const baseTotal=Object.values(b).reduce((a,v)=>a+v,0)+pisai+gas;
+ const diff=Math.max(0,available-baseTotal),f={...b};
+ if(diff>0){const ex=Math.round(diff/2);f.mirch=b.mirch+ex;f.dhaniya=b.dhaniya+diff-ex}
+ const total=Object.values(f).reduce((a,v)=>a+v,0)+pisai+gas;
+ const status=Math.abs(total-Math.round(available))<.01?"MATCH":"CHECK";
+ const share=a=>available?a/available*100:0;
+ const kirana=["dal","oil","haldi","mirch","dhaniya","namak","jeera","lahsun"].reduce((s,k)=>s+f[k],0);
+ const row=[["दाल",q.dal,f.dal],["तेल / घी",q.oil,f.oil],["हल्दी",q.haldi,f.haldi],["मिर्च",q.mirch,f.mirch],["धनिया",q.dhaniya,f.dhaniya],["नमक",q.namak,f.namak],["जीरा",q.jeera,f.jeera],["लहसुन",q.lahsun,f.lahsun]];
+ let h=`<div class="status-grid"><div class="stat"><small>Available Amount</small><strong>${money(available)}</strong></div><div class="stat"><small>Base Actual Cost</small><strong>${money(baseTotal)}</strong></div><div class="stat"><small>Final Grand Total</small><strong>${money(total)}</strong></div><div class="stat"><small>Status</small><strong class="${status==="MATCH"?"match":"check"}">${status}</strong></div></div>`;
+ h+=`<h3 class="section-title">1. KIRANA / सामग्री</h3><div class="table-wrap"><table><thead><tr><th>सामग्री</th><th>मात्रा</th><th>राशि ₹</th><th>Budget Share</th></tr></thead><tbody>`;
+ row.forEach(x=>h+=`<tr><td>${x[0]}</td><td>${kg(x[1])} kg</td><td>${money(x[2])}</td><td>${pct(share(x[2]))}</td></tr>`);
+ h+=`<tr><th>Kirana Total</th><th></th><th>${money(kirana)}</th><th>${pct(share(kirana))}</th></tr></tbody></table></div>`;
+ h+=`<h3 class="section-title">2. FRUIT + VEGETABLE / फल + सब्जी</h3><div class="table-wrap"><table><thead><tr><th>सामग्री</th><th>मात्रा</th><th>राशि ₹</th><th>Budget Share</th></tr></thead><tbody><tr><td>सब्जी</td><td>${kg(q.sabji)} kg</td><td>${money(b.sabji)}</td><td>${pct(share(b.sabji))}</td></tr><tr><td>फल</td><td>${kg(q.fruit)} kg</td><td>${money(f.fruit)}</td><td>${pct(share(f.fruit))}</td></tr><tr><th>Fruit + Vegetable Total</th><th></th><th>${money(b.sabji+f.fruit)}</th><th>${pct(share(b.sabji+f.fruit))}</th></tr></tbody></table></div>`;
+ h+=`<h3 class="section-title">3. PISAI / पिसाई</h3><div class="table-wrap"><table><thead><tr><th>सामग्री</th><th>मात्रा</th><th>राशि ₹</th><th>Budget Share</th></tr></thead><tbody><tr><td>Wheat Pisai</td><td>${w.toFixed(2)} kg</td><td>${money(pisai)}</td><td>${pct(share(pisai))}</td></tr><tr><th>Pisai Total</th><th></th><th>${money(pisai)}</th><th>${pct(share(pisai))}</th></tr></tbody></table></div>`;
+ h+=`<h3 class="section-title">4. GAS / ईंधन</h3><div class="table-wrap"><table><thead><tr><th>सामग्री</th><th>मात्रा</th><th>राशि ₹</th><th>Budget Share</th></tr></thead><tbody><tr><td>Gas / Fuel</td><td>${((p+u)/(n("gasNorm")||1200)).toFixed(4)} cylinder share</td><td>${money(gas)}</td><td>${pct(share(gas))}</td></tr><tr><th>Gas Total</th><th></th><th>${money(gas)}</th><th>${pct(share(gas))}</th></tr></tbody></table></div>`;
+ h+=`<div class="total-box">💰 Available: ${money(available)} &nbsp; | &nbsp; Grand Total: ${money(total)} &nbsp; | &nbsp; <span class="${status==="MATCH"?"match":"check"}">${status}</span></div>`;
+ h+=`<div class="notice">Budget Adjustment: ₹${diff.toFixed(2)} — ${diff>0?"अतिरिक्त राशि का समायोजन मिर्च और धनिया में किया गया है।":"कोई अतिरिक्त budget adjustment नहीं।"}</div>`;
+ document.getElementById("mdmOutput").innerHTML=h;
+}
+
+function loadImage(file){return new Promise((res,rej)=>{const i=new Image();i.onload=()=>res(i);i.onerror=rej;i.src=URL.createObjectURL(file)})}
+function downloadBlob(blob,name){if(!blob)return;const u=URL.createObjectURL(blob),a=document.createElement("a");a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1200)}
+function canvasBlob(c,q){return new Promise(res=>c.toBlob(res,"image/jpeg",q))}
+
+async function compressImage(){
+ const f=document.getElementById("imageFile").files[0];if(!f)return alert("पहले image select करें।");
+ const target=n("targetKB")*1024,maxW=n("maxWidth")||1600,img=await loadImage(f);
+ let w=Math.min(img.width,maxW),h=Math.round(img.height*w/img.width),q=.85,blob;
+ for(let i=0;i<10;i++){const c=document.createElement("canvas");c.width=w;c.height=h;c.getContext("2d").drawImage(img,0,0,w,h);blob=await canvasBlob(c,q);if(blob.size<=target)break;q-=.07;if(q<.25){w=Math.max(300,Math.round(w*.82));h=Math.round(img.height*w/img.width);q=.82}}
+ downloadBlob(blob,"compressed-image.jpg");document.getElementById("imageStatus").textContent=`✅ तैयार: ${(blob.size/1024).toFixed(1)} KB`;
+}
+async function resizeImage(){
+ const f=document.getElementById("resizeFile").files[0];if(!f)return alert("पहले image select करें।");
+ const img=await loadImage(f),w=n("resizeWidth"),h=n("resizeHeight");if(!w||!h)return alert("Width और Height भरें।");
+ const c=document.createElement("canvas");c.width=w;c.height=h;c.getContext("2d").drawImage(img,0,0,w,h);downloadBlob(await canvasBlob(c,.9),"resized-image.jpg");
+}
+async function passportPhoto(){
+ const f=document.getElementById("passportFile").files[0];if(!f)return alert("पहले photo select करें।");
+ const img=await loadImage(f),W=n("passportWidth")||354,H=n("passportHeight")||472,ratio=W/H;
+ let sw=img.width,sh=Math.round(sw/ratio);if(sh>img.height){sh=img.height;sw=Math.round(sh*ratio)}
+ const sx=(img.width-sw)/2,sy=(img.height-sh)/2,c=document.createElement("canvas");c.width=W;c.height=H;c.getContext("2d").drawImage(img,sx,sy,sw,sh,0,0,W,H);downloadBlob(await canvasBlob(c,.92),"passport-photo.jpg");
+}
+function pdfMsg(t){document.getElementById("pdfStatus").innerHTML=t}
+async function mergePDF(){
+ const fs=[...document.getElementById("pdfMergeFiles").files];if(!fs.length)return alert("PDF files select करें।");
+ const out=await PDFLib.PDFDocument.create();for(const f of fs){const src=await PDFLib.PDFDocument.load(await f.arrayBuffer());(await out.copyPages(src,src.getPageIndices())).forEach(p=>out.addPage(p))}
+ downloadBlob(new Blob([await out.save()],{type:"application/pdf"}),"merged.pdf");pdfMsg("✅ PDF merge हो गई।");
+}
+async function splitPDF(){
+ const f=document.getElementById("pdfSplitFile").files[0];if(!f)return alert("PDF select करें।");const page=n("splitPage"),src=await PDFLib.PDFDocument.load(await f.arrayBuffer());
+ if(page<1||page>src.getPageCount())return alert("Page number गलत है।");
+ const out=await PDFLib.PDFDocument.create();const [p]=await out.copyPages(src,[page-1]);out.addPage(p);downloadBlob(new Blob([await out.save()],{type:"application/pdf"}),`page-${page}.pdf`);pdfMsg("✅ Page अलग PDF बन गया।");
+}
+async function imageToPDF(){
+ const fs=[...document.getElementById("imagePDFfiles").files];if(!fs.length)return alert("Images select करें।");
+ const out=await PDFLib.PDFDocument.create();for(const f of fs){const data=await f.arrayBuffer(),im=f.type==="image/png"?await out.embedPng(data):await out.embedJpg(data),s=im.scale(1),p=out.addPage([s.width,s.height]);p.drawImage(im,{x:0,y:0,width:s.width,height:s.height})}
+ downloadBlob(new Blob([await out.save()],{type:"application/pdf"}),"images-to-pdf.pdf");pdfMsg("✅ Images से PDF बन गई।");
+}
+async function pdfToImage(){
+ const f=document.getElementById("pdfImageFile").files[0];if(!f)return alert("PDF select करें।");if(!window.pdfjsLib)return alert("PDF engine load हो रहा है, 3 सेकंड बाद कोशिश करें।");
+ const pdf=await window.pdfjsLib.getDocument({data:await f.arrayBuffer()}).promise;pdfMsg(`⏳ ${pdf.numPages} pages तैयार हो रहे हैं...`);
+ for(let k=1;k<=pdf.numPages;k++){const p=await pdf.getPage(k),v=p.getViewport({scale:1.5}),c=document.createElement("canvas");c.width=v.width;c.height=v.height;await p.render({canvasContext:c.getContext("2d"),viewport:v}).promise;downloadBlob(await canvasBlob(c,.9),`page-${k}.jpg`)}
+ pdfMsg(`✅ ${pdf.numPages} JPG तैयार हो गए।`);
+}
+async function compressPDF(){
+ const f=document.getElementById("pdfCompressFile").files[0];if(!f)return alert("PDF select करें।");if(!window.pdfjsLib)return alert("PDF engine load हो रहा है, 3 सेकंड बाद कोशिश करें।");
+ const pdf=await window.pdfjsLib.getDocument({data:await f.arrayBuffer()}).promise,out=await PDFLib.PDFDocument.create();
+ for(let k=1;k<=pdf.numPages;k++){const p=await pdf.getPage(k),v=p.getViewport({scale:.9}),c=document.createElement("canvas");c.width=v.width;c.height=v.height;await p.render({canvasContext:c.getContext("2d"),viewport:v}).promise;const jpg=await canvasBlob(c,.65),im=await out.embedJpg(await jpg.arrayBuffer()),pg=out.addPage([v.width,v.height]);pg.drawImage(im,{x:0,y:0,width:v.width,height:v.height})}
+ const bytes=await out.save();downloadBlob(new Blob([bytes],{type:"application/pdf"}),"compressed.pdf");pdfMsg(`✅ Compressed PDF तैयार: ${(bytes.length/1024).toFixed(0)} KB`);
+}
+window.addEventListener("load",calculateMDM);
+</script>
+</body>
+</html>
