@@ -3,68 +3,84 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>ShalaMitra 2026 | Balram Meena</title>
 
 <style>
 *{box-sizing:border-box}
+
 body{
  margin:0;
  font-family:Arial,sans-serif;
  background:#f5f7fb;
  color:#172033
 }
+
 header{
  background:linear-gradient(135deg,#155eef,#6d5dfc);
  color:#fff;
  padding:28px 15px;
  text-align:center
 }
-.brand{font-size:30px;font-weight:800}
-.by{margin:6px 0 18px}
-.hero h1{margin:8px}
-.hero p{line-height:1.5}
-.search{
- display:flex;
- gap:8px;
- max-width:700px;
- margin:auto
+
+.brand{
+ font-size:30px;
+ font-weight:800
 }
-.search input{
- flex:1;
- padding:13px;
- border:0;
- border-radius:12px;
- font-size:16px
+
+.by{
+ margin:6px 0 18px
 }
-.search button{
- border:0;
- border-radius:12px;
- padding:0 18px;
- font-weight:700
+
+.hero h1{
+ margin:8px
 }
+
+.hero p{
+ line-height:1.5
+}
+
 .container{
  max-width:1150px;
  margin:auto;
  padding:24px 14px
 }
-.title{text-align:center}
+
+.title{
+ text-align:center
+}
+
 .tools{
  display:grid;
- grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+ grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
  gap:15px
 }
+
 .card,.panel{
  background:white;
  border-radius:18px;
  padding:20px;
  box-shadow:0 5px 20px #18213a12
 }
-.icon{font-size:30px}
+
+.card{
+ transition:.2s
+}
+
+.card:hover{
+ transform:translateY(-3px)
+}
+
+.icon{
+ font-size:34px
+}
+
 .card p{
  color:#667085;
- min-height:42px;
- line-height:1.45
+ line-height:1.45;
+ min-height:45px
 }
+
 .btn{
  border:0;
  border-radius:10px;
@@ -74,99 +90,165 @@ header{
  font-weight:700;
  cursor:pointer
 }
-.btn.green{background:#087443}
-.btn.red{background:#d92d20}
-.btn.gray{background:#667085}
+
+.btn.green{
+ background:#087443
+}
+
+.btn.red{
+ background:#d92d20
+}
+
+.btn.gray{
+ background:#667085
+}
+
 .panel{
  display:none;
  margin-top:22px
 }
-.panel.active{display:block}
+
+.panel.active{
+ display:block
+}
+
 .row{
  display:grid;
- grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+ grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
  gap:12px
 }
+
 .field label{
  display:block;
  font-weight:700;
  margin-bottom:6px
 }
-.field input,.field select,.field textarea{
+
+.field input,
+.field select{
  width:100%;
  padding:11px;
  border:1px solid #d5dbe7;
  border-radius:9px;
  font-size:15px
 }
-textarea{min-height:80px}
+
 .result{
  background:#f4f7ff;
  border-radius:12px;
- padding:14px;
+ padding:15px;
  margin-top:15px
 }
+
 .actions{
  display:flex;
  gap:8px;
  flex-wrap:wrap;
  margin-top:15px
 }
-.table-wrap{overflow-x:auto}
+
+.table-wrap{
+ overflow-x:auto
+}
+
 table{
  width:100%;
  border-collapse:collapse;
- margin-top:15px;
- background:#fff
+ margin-top:15px
 }
+
 th,td{
  border:1px solid #d8dee9;
- padding:8px;
+ padding:9px;
  text-align:left
 }
-th{background:#eef3ff}
+
+th{
+ background:#eef3ff
+}
+
 .bill{
  border:2px solid #222;
  padding:20px;
  background:white;
  margin-top:15px
 }
-.bill-head{text-align:center}
-.bill-head h2{margin:5px}
-.bill-title{
- text-align:center;
+
+.bill-head{
+ text-align:center
+}
+
+.bill-head h2{
+ margin:5px
+}
+
+.section-title{
+ margin-top:25px;
+ border-left:5px solid #155eef;
+ padding-left:10px
+}
+
+.total-box{
  font-size:20px;
- font-weight:bold;
- margin:12px 0
+ font-weight:800;
+ padding:15px;
+ border-radius:12px;
+ background:#eef3ff;
+ margin-top:15px
 }
-.bill-info{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:5px
+
+.match{
+ color:#087443;
+ font-weight:800
 }
-.small{font-size:13px;color:#667085}
-footer{
- text-align:center;
- padding:25px;
- color:#667085
+
+.check{
+ color:#d92d20;
+ font-weight:800
 }
-.saved{
- border:1px solid #ddd;
- padding:12px;
+
+.status{
+ padding:10px;
  border-radius:10px;
- margin:8px 0;
+ margin-top:10px;
  background:#fff
 }
-@media(max-width:600px){
- .search{flex-direction:column}
- .search button{padding:12px}
- .bill-info{grid-template-columns:1fr}
+
+.file-box{
+ border:2px dashed #b8c2d6;
+ border-radius:14px;
+ padding:25px;
+ text-align:center;
+ background:#fafbff
 }
-@media print{
- header,.tools,.title,.search,footer,
- .actions,.no-print{display:none!important}
- .panel{display:block!important;box-shadow:none}
- body{background:#fff}
+
+.file-box input{
+ max-width:100%;
+ margin:15px 0
+}
+
+.progress{
+ margin-top:12px;
+ padding:10px;
+ background:#eef3ff;
+ border-radius:10px
+}
+
+footer{
+ text-align:center;
+ padding:30px 15px;
+ color:#667085
+}
+
+.small{
+ font-size:13px;
+ color:#667085
+}
+
+@media(max-width:600px){
+ .tools{
+  grid-template-columns:1fr
+ }
 }
 </style>
 </head>
@@ -176,101 +258,86 @@ footer{
 <header>
 
 <div class="brand">🏫 ShalaMitra</div>
-<div class="by">Balram Meena • Akla, Khinvsar</div>
+
+<div class="by">
+Balram Meena • Akla, Khinvsar
+</div>
 
 <div class="hero">
+
 <h1>School Work का आसान Digital साथी 👋</h1>
 
 <p>
-MDM, Bill, Entry, Case Book, Image और PDF Tools —
-एक ही जगह।
+MDM • PDF Tools • Image Tools
 </p>
 
-<div class="search">
-<input id="search"
-placeholder="🔍 Tool खोजें..."
-oninput="findTools()">
-
-<button onclick="findTools()">Search</button>
 </div>
 
-</div>
 </header>
 
 
 <main class="container">
 
-<h2 class="title">⭐ ShalaMitra 2026 Tools</h2>
+<h2 class="title">
+⭐ ShalaMitra 2026
+</h2>
 
-<div class="tools" id="cards">
 
-<div class="card" data-key="mdm bill student rate calculation">
+<!-- HOME TOOLS -->
+
+<div class="tools">
+
+<div class="card">
+
 <div class="icon">🏫</div>
+
 <h3>MDM 2026</h3>
-<p>Student, दिन, rate और MDM राशि की सही गणना करें।</p>
-<button class="btn" onclick="openTool('mdm')">
+
+<p>
+MDM की automatic calculation और bill तैयार करें।
+</p>
+
+<button class="btn"
+onclick="openTool('mdm')">
 Open MDM
 </button>
+
 </div>
 
 
-<div class="card" data-key="bill invoice generate edit">
-<div class="icon">🧾</div>
-<h3>2026 Bill Generator</h3>
-<p>Bill बनाएं, save करें, edit करें और print करें।</p>
-<button class="btn" onclick="openTool('bill')">
-Open Bill
+<div class="card">
+
+<div class="icon">📄</div>
+
+<h3>PDF Tools</h3>
+
+<p>
+PDF compress, merge, split और image conversion।
+</p>
+
+<button class="btn"
+onclick="openTool('pdf')">
+Open PDF Tools
 </button>
+
 </div>
 
 
-<div class="card" data-key="cooking conversion ingredient">
-<div class="icon">🍲</div>
-<h3>Cooking Conversion</h3>
-<p>तेल, दाल, मिर्च, धनिया, हल्दी आदि की मात्रा निकालें।</p>
-<button class="btn" onclick="openTool('cooking')">
-Open Tool
-</button>
-</div>
+<div class="card">
 
-
-<div class="card" data-key="entry receipt payment">
-<div class="icon">📒</div>
-<h3>Entry</h3>
-<p>Receipt और Payment की entries रखें।</p>
-<button class="btn" onclick="openTool('entry')">
-Open Entry
-</button>
-</div>
-
-
-<div class="card" data-key="case book credit debit">
-<div class="icon">📊</div>
-<h3>Case Book</h3>
-<p>Credit, Debit और Grand Total देखें।</p>
-<button class="btn" onclick="openTool('casebook')">
-Open Case Book
-</button>
-</div>
-
-
-<div class="card" data-key="image kb mb">
 <div class="icon">🖼️</div>
-<h3>Image KB / MB</h3>
-<p>Photo का size कम करके download करें।</p>
-<button class="btn" onclick="openTool('image')">
-Open Tool
-</button>
-</div>
 
+<h3>Image Tools</h3>
 
-<div class="card" data-key="passport photo">
-<div class="icon">📷</div>
-<h3>Passport Photo</h3>
-<p>Passport-size photo तैयार करें।</p>
-<button class="btn" onclick="openTool('passport')">
-Open Tool
+<p>
+Photo का KB/MB कम करें और image resize करें।
+</p>
+
+<button class="btn"
+onclick="openTool('image')">
+Open Image Tools
 </button>
+
 </div>
 
 </div>
@@ -280,430 +347,489 @@ Open Tool
 
 <section id="mdm" class="panel">
 
-<h2>🏫 MDM 2026 Calculation</h2>
+<h2>🏫 MDM 2026 Automatic Bill</h2>
+
+<p class="small">
+यहाँ final MDM Excel की calculation logic Step 4 में जोड़ी जाएगी।
+</p>
+
+
+<h3 class="section-title">
+1. Beneficiary Details
+</h3>
 
 <div class="row">
 
 <div class="field">
-<label>Primary Students</label>
-<input id="p" type="number" value="0">
+<label>Primary Beneficiary Student-Days</label>
+
+<input id="mdmPrimary"
+type="number"
+value="368"
+min="0">
 </div>
+
 
 <div class="field">
-<label>Upper Primary Students</label>
-<input id="u" type="number" value="0">
+<label>Upper Primary Beneficiary Student-Days</label>
+
+<input id="mdmUpper"
+type="number"
+value="0"
+min="0">
 </div>
+
 
 <div class="field">
-<label>Primary Rate ₹</label>
-<input id="pr" type="number" step=".01" value="6.78">
+<label>Fruit Beneficiary Student-Days</label>
+
+<input id="mdmFruit"
+type="number"
+value="72"
+min="0">
 </div>
+
 
 <div class="field">
-<label>Upper Primary Rate ₹</label>
-<input id="ur" type="number" step=".01" value="10.17">
+<label>Wheat for Pisai (kg)</label>
+
+<input id="mdmWheat"
+type="number"
+value="21.6"
+step="0.01"
+min="0">
 </div>
+
+</div>
+
+
+<h3 class="section-title">
+2. Rates
+</h3>
+
+<div class="row">
 
 <div class="field">
-<label>लाभान्वित दिन</label>
-<input id="days" type="number" value="1">
+<label>Primary Material Cost ₹</label>
+
+<input id="primaryRate"
+type="number"
+value="6.78"
+step="0.01">
+</div>
+
+
+<div class="field">
+<label>Upper Primary Material Cost ₹</label>
+
+<input id="upperRate"
+type="number"
+value="10.17"
+step="0.01">
+</div>
+
+
+<div class="field">
+<label>Gas Cylinder Rate ₹</label>
+
+<input id="gasRate"
+type="number"
+value="950"
+step="0.01">
+</div>
+
+
+<div class="field">
+<label>Gas Student-Days / Cylinder</label>
+
+<input id="gasNorm"
+type="number"
+value="1200">
+</div>
+
+
+<div class="field">
+<label>Pisai Rate ₹ / kg</label>
+
+<input id="pisaiRate"
+type="number"
+value="3"
+step="0.01">
 </div>
 
 </div>
+
+
+<h3 class="section-title">
+3. MDM Calculation
+</h3>
+
 
 <div class="actions">
 
-<button class="btn" onclick="calcMDM()">
-Calculate
+<button class="btn"
+onclick="calculateMDM()">
+Calculate MDM
 </button>
 
-<button class="btn green" onclick="copyMDM()">
-Copy Result
+<button class="btn gray"
+onclick="window.print()">
+🖨️ Print
 </button>
 
 </div>
 
-<div id="mdmResult" class="result"></div>
+
+<div id="mdmOutput"
+class="result">
+
+MDM calculation यहाँ दिखाई जाएगी।
+</div>
+
 
 </section>
 
 
-<!-- BILL -->
 
-<section id="bill" class="panel">
+<!-- PDF TOOLS -->
 
-<h2>🧾 MDM 2026 Bill Generator</h2>
+<section id="pdf" class="panel">
 
-<div class="row">
+<h2>📄 PDF Tools</h2>
 
-<div class="field">
-<label>School Name</label>
-<input id="school" value="राजकीय प्राथमिक विद्यालय आकला">
-</div>
+<div class="tools">
 
-<div class="field">
-<label>SMC / संस्था</label>
-<input id="smc" value="SMC">
-</div>
 
-<div class="field">
-<label>Bill No.</label>
-<input id="billno" placeholder="2026/001">
-</div>
+<div class="card">
 
-<div class="field">
-<label>Bill Date</label>
-<input id="billdate" type="date">
-</div>
+<div class="icon">📉</div>
 
-<div class="field">
-<label>Supplier Name</label>
-<input id="supplier">
-</div>
+<h3>PDF Compressor</h3>
 
-<div class="field">
-<label>Address</label>
-<input id="address">
-</div>
+<p>
+PDF की file size कम करें।
+</p>
 
-</div>
-
-
-<h3>Bill Items</h3>
-
-<div class="table-wrap">
-
-<table id="billTable">
-
-<thead>
-<tr>
-<th>Sr.</th>
-<th>Description</th>
-<th>Quantity</th>
-<th>Rate ₹</th>
-<th>Total ₹</th>
-<th class="no-print">Delete</th>
-</tr>
-</thead>
-
-<tbody id="billRows">
-
-<tr>
-<td>1</td>
-<td><input class="desc" value="तेल"></td>
-<td><input class="qty" type="number" value="0" oninput="billTotal()"></td>
-<td><input class="rate" type="number" value="0" oninput="billTotal()"></td>
-<td class="lineTotal">0.00</td>
-<td class="no-print">
-<button class="btn red" onclick="deleteRow(this)">X</button>
-</td>
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-
-<div class="actions no-print">
-
-<button class="btn" onclick="addRow()">
-+ Item
-</button>
-
-<button class="btn green" onclick="billTotal()">
-Calculate Bill
-</button>
-
-<button class="btn" onclick="saveBill()">
-💾 Save Bill
-</button>
-
-<button class="btn gray" onclick="window.print()">
-🖨️ Print / PDF
-</button>
-
-</div>
-
-
-<div id="billPreview" class="bill">
-
-<div class="bill-head">
-
-<h2 id="previewSchool">
-राजकीय प्राथमिक विद्यालय आकला
-</h2>
-
-<div>पंचायत समिति खींवसर</div>
-
-<div class="bill-title">
-MDM BILL — 2026
-</div>
-
-</div>
-
-
-<div class="bill-info">
-
-<div>
-<strong>Bill No:</strong>
-<span id="previewBillNo"></span>
-</div>
-
-<div>
-<strong>Date:</strong>
-<span id="previewDate"></span>
-</div>
-
-<div>
-<strong>Supplier:</strong>
-<span id="previewSupplier"></span>
-</div>
-
-<div>
-<strong>SMC:</strong>
-<span id="previewSMC"></span>
-</div>
-
-</div>
-
-
-<div id="previewTable"></div>
-
-</div>
-
-</section>
-
-
-<!-- COOKING -->
-
-<section id="cooking" class="panel">
-
-<h2>🍲 Cooking Conversion</h2>
-
-<div class="row">
-
-<div class="field">
-<label>Total Primary Beneficiaries</label>
-<input id="cp" type="number" value="0" oninput="cookCalc()">
-</div>
-
-<div class="field">
-<label>Total Upper Primary Beneficiaries</label>
-<input id="cu" type="number" value="0" oninput="cookCalc()">
-</div>
-
-</div>
-
-
-<div class="result">
-
-<table>
-
-<thead>
-<tr>
-<th>वस्तु</th>
-<th>दर / मात्रा</th>
-<th>Primary</th>
-<th>Upper Primary</th>
-</tr>
-</thead>
-
-<tbody id="cookBody"></tbody>
-
-</table>
-
-</div>
-
-</section>
-
-
-<!-- ENTRY -->
-
-<section id="entry" class="panel">
-
-<h2>📒 Receipt / Payment Entry</h2>
-
-<div class="row">
-
-<div class="field">
-<label>Date</label>
-<input id="edate" type="date">
-</div>
-
-<div class="field">
-<label>Type</label>
-
-<select id="etype">
-<option value="receipt">Receipt</option>
-<option value="payment">Payment</option>
-</select>
-
-</div>
-
-<div class="field">
-<label>Head</label>
-
-<select id="ehead">
-<option>MME</option>
-<option>Conversion</option>
-<option>Cook Cum Helper</option>
-<option>Other</option>
-</select>
-
-</div>
-
-<div class="field">
-<label>Particulars</label>
-<input id="epart">
-</div>
-
-<div class="field">
-<label>Amount ₹</label>
-<input id="eamount" type="number" value="0">
-</div>
-
-<div class="field">
-<label>Mode</label>
-
-<select id="emode">
-<option>Cash</option>
-<option>Bank</option>
-<option>By Cheque</option>
-</select>
-
-</div>
-
-</div>
+<input
+id="pdfCompressFile"
+type="file"
+accept="application/pdf">
 
 <div class="actions">
 
-<button class="btn" onclick="addEntry()">
-Add Entry
-</button>
-
-<button class="btn red" onclick="clearEntries()">
-Clear All
+<button class="btn"
+onclick="compressPDF()">
+Compress PDF
 </button>
 
 </div>
 
-<div id="entryList"></div>
+</div>
+
+
+<div class="card">
+
+<div class="icon">🔗</div>
+
+<h3>PDF Merge</h3>
+
+<p>
+कई PDF को एक PDF में जोड़ें।
+</p>
+
+<input
+id="pdfMergeFiles"
+type="file"
+accept="application/pdf"
+multiple>
+
+<div class="actions">
+
+<button class="btn"
+onclick="mergePDF()">
+Merge PDF
+</button>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🖼️</div>
+
+<h3>PDF → Image</h3>
+
+<p>
+PDF pages को image में बदलें।
+</p>
+
+<input
+id="pdfImageFile"
+type="file"
+accept="application/pdf">
+
+<div class="actions">
+
+<button class="btn"
+onclick="pdfToImage()">
+Convert
+</button>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">📑</div>
+
+<h3>Image → PDF</h3>
+
+<p>
+एक या कई images को PDF बनाएं।
+</p>
+
+<input
+id="imagePDFfiles"
+type="file"
+accept="image/*"
+multiple>
+
+<div class="actions">
+
+<button class="btn"
+onclick="imageToPDF()">
+Create PDF
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div id="pdfStatus"
+class="result">
+
+PDF tool का result यहाँ दिखाई देगा।
+</div>
 
 </section>
 
 
-<!-- CASE BOOK -->
 
-<section id="casebook" class="panel">
-
-<h2>📊 Case Book</h2>
-
-<div class="result">
-
-<div>
-<strong>Total Credit / Receipt:</strong>
-₹<span id="creditTotal">0.00</span>
-</div>
-
-<hr>
-
-<div>
-<strong>Total Debit / Payment:</strong>
-₹<span id="debitTotal">0.00</span>
-</div>
-
-<hr>
-
-<div>
-<strong>Balance:</strong>
-₹<span id="balanceTotal">0.00</span>
-</div>
-
-</div>
-
-<div id="caseList"></div>
-
-</section>
-
-
-<!-- IMAGE -->
+<!-- IMAGE TOOLS -->
 
 <section id="image" class="panel">
 
-<h2>🖼️ Image KB / MB Reducer</h2>
+<h2>🖼️ Image Tools</h2>
 
-<input id="img" type="file" accept="image/*">
+
+<div class="card">
+
+<h3>📉 Image Compressor</h3>
+
+<p>
+Photo select करें और target KB डालें।
+</p>
+
 
 <div class="row">
 
 <div class="field">
-<label>Target KB</label>
-<input id="kb" type="number" value="100">
+
+<label>Image</label>
+
+<input
+id="imageFile"
+type="file"
+accept="image/*">
+
 </div>
+
 
 <div class="field">
-<label>Max Width</label>
-<input id="mw" type="number" value="1600">
+
+<label>Target KB</label>
+
+<input
+id="targetKB"
+type="number"
+value="100"
+min="10">
+
+</div>
+
+
+<div class="field">
+
+<label>Maximum Width</label>
+
+<input
+id="maxWidth"
+type="number"
+value="1600">
+
 </div>
 
 </div>
+
 
 <div class="actions">
 
-<button class="btn" onclick="compress()">
+<button class="btn"
+onclick="compressImage()">
 Compress & Download
 </button>
 
 </div>
 
-<div id="istatus" class="result"></div>
 
-</section>
+<div id="imageStatus"
+class="result">
+
+Image result यहाँ दिखाई देगा।
+</div>
+
+</div>
 
 
-<!-- PASSPORT -->
 
-<section id="passport" class="panel">
+<div class="card">
 
-<h2>📷 Passport Photo</h2>
-
-<input id="pass" type="file" accept="image/*">
+<h3>📐 Image Resize</h3>
 
 <div class="row">
 
 <div class="field">
-<label>Width</label>
-<input id="pw" type="number" value="354">
+
+<label>Image</label>
+
+<input
+id="resizeFile"
+type="file"
+accept="image/*">
+
 </div>
+
 
 <div class="field">
+
+<label>Width</label>
+
+<input
+id="resizeWidth"
+type="number"
+value="800">
+
+</div>
+
+
+<div class="field">
+
 <label>Height</label>
-<input id="ph" type="number" value="472">
+
+<input
+id="resizeHeight"
+type="number"
+value="600">
+
 </div>
 
 </div>
+
 
 <div class="actions">
 
-<button class="btn" onclick="passport()">
-Create & Download
+<button class="btn"
+onclick="resizeImage()">
+Resize & Download
 </button>
 
 </div>
 
-</section>
+</div>
 
+
+<div class="card">
+
+<h3>📷 Passport Photo</h3>
+
+<p>
+Passport size photo तैयार करें।
+</p>
+
+
+<div class="row">
+
+<div class="field">
+
+<label>Photo</label>
+
+<input
+id="passportFile"
+type="file"
+accept="image/*">
+
+</div>
+
+
+<div class="field">
+
+<label>Width</label>
+
+<input
+id="passportWidth"
+type="number"
+value="354">
+
+</div>
+
+
+<div class="field">
+
+<label>Height</label>
+
+<input
+id="passportHeight"
+type="number"
+value="472">
+
+</div>
+
+</div>
+
+
+<div class="actions">
+
+<button class="btn"
+onclick="passportPhoto()">
+Create Photo
+</button>
+
+</div>
+
+</div>
+
+
+</section>
 
 </main>
 
 
 <footer>
 
-<b>🏫 ShalaMitra</b><br>
+<b>🏫 ShalaMitra</b>
 
-Balram Meena • Akla, Khinvsar<br>
+<br>
+
+Balram Meena • Akla, Khinvsar
+
+<br>
 
 © 2026 ShalaMitra
 
@@ -712,718 +838,519 @@ Balram Meena • Akla, Khinvsar<br>
 
 <script>
 
-const INGREDIENTS = [
-
-["तेल",90],
-["दाल",85],
-["मिर्ची",190],
-["धनिया",160],
-["हल्दी",185],
-["राई",75],
-["जीरा",165],
-["लहसुन",110],
-["नमक",20],
-["सब्जी",38],
-["फल",28]
-
-];
-
+/* ---------------------------
+   BASIC NAVIGATION
+---------------------------- */
 
 function openTool(id){
 
-document.querySelectorAll(".panel")
-.forEach(x=>x.classList.remove("active"));
-
-let e=document.getElementById(id);
-
-e.classList.add("active");
-
-e.scrollIntoView({behavior:"smooth"});
-
-if(id==="cooking")cookCalc();
-
-if(id==="casebook")showCase();
-
-if(id==="entry")showEntries();
-
-if(id==="bill")billTotal();
-
-}
-
-
-function findTools(){
-
-let q=document
-.getElementById("search")
-.value.toLowerCase();
-
 document
-.querySelectorAll("#cards .card")
-.forEach(c=>{
-
-let ok=
-!q ||
-c.innerText.toLowerCase().includes(q) ||
-c.dataset.key.includes(q);
-
-c.style.display=ok?"":"none";
-
+.querySelectorAll(".panel")
+.forEach(x=>{
+ x.classList.remove("active");
 });
 
+const panel=document.getElementById(id);
+
+if(panel){
+
+ panel.classList.add("active");
+
+ panel.scrollIntoView({
+  behavior:"smooth"
+ });
+
 }
-
-
-/* MDM */
-
-function calcMDM(){
-
-let p=Number(document.getElementById("p").value)||0;
-
-let u=Number(document.getElementById("u").value)||0;
-
-let pr=Number(document.getElementById("pr").value)||0;
-
-let ur=Number(document.getElementById("ur").value)||0;
-
-let d=Number(document.getElementById("days").value)||0;
-
-let primary=p*pr*d;
-
-let upper=u*ur*d;
-
-let total=primary+upper;
-
-document.getElementById("mdmResult").innerHTML=
-
-"<b>Primary:</b> ₹"+primary.toFixed(2)+
-"<br><b>Upper Primary:</b> ₹"+upper.toFixed(2)+
-"<br><hr>"+
-"<b>Total:</b> ₹"+total.toFixed(2)+
-"<br><small>"+
-p+" Primary × ₹"+pr+" × "+d+" दिन"+
-"</small>";
-
-return total;
 
 }
 
 
-function copyMDM(){
+/* ---------------------------
+   MDM - TEMPORARY TEST
+---------------------------- */
 
-let total=calcMDM();
+function calculateMDM(){
 
-navigator.clipboard.writeText(
-"MDM Total ₹"+total.toFixed(2)
-);
+const p=
+Number(document.getElementById("mdmPrimary").value)||0;
 
-alert("Result copied");
+const u=
+Number(document.getElementById("mdmUpper").value)||0;
 
-}
+const fruit=
+Number(document.getElementById("mdmFruit").value)||0;
 
+const wheat=
+Number(document.getElementById("mdmWheat").value)||0;
 
-/* BILL */
+const pr=
+Number(document.getElementById("primaryRate").value)||0;
 
-function addRow(){
+const ur=
+Number(document.getElementById("upperRate").value)||0;
 
-let tbody=document.getElementById("billRows");
+const gasRate=
+Number(document.getElementById("gasRate").value)||0;
 
-let n=tbody.rows.length+1;
+const gasNorm=
+Number(document.getElementById("gasNorm").value)||1;
 
-let tr=tbody.insertRow();
-
-tr.innerHTML=`
-
-<td>${n}</td>
-
-<td>
-<input class="desc">
-</td>
-
-<td>
-<input class="qty"
-type="number"
-value="0"
-oninput="billTotal()">
-</td>
-
-<td>
-<input class="rate"
-type="number"
-value="0"
-oninput="billTotal()">
-</td>
-
-<td class="lineTotal">0.00</td>
-
-<td class="no-print">
-<button class="btn red"
-onclick="deleteRow(this)">X</button>
-</td>
-
-`;
-
-}
+const pisaiRate=
+Number(document.getElementById("pisaiRate").value)||0;
 
 
-function deleteRow(btn){
+/* Available amount */
 
-btn.closest("tr").remove();
-
-billTotal();
-
-}
+const available=
+(p*pr)+(u*ur);
 
 
-function billTotal(){
+/* Temporary base calculations */
 
-let rows=
-document.querySelectorAll("#billRows tr");
+const pisai=
+wheat*pisaiRate;
 
-let total=0;
+const gas=
+(p+u)/gasNorm*gasRate;
 
-let html=`
+
+/* Current test information */
+
+document.getElementById("mdmOutput").innerHTML=`
+
+<h3>MDM Summary</h3>
 
 <table>
 
-<thead>
 <tr>
-<th>Sr.</th>
-<th>Description</th>
-<th>Quantity</th>
-<th>Rate</th>
-<th>Total</th>
-</tr>
-</thead>
-
-<tbody>
-`;
-
-rows.forEach((r,i)=>{
-
-let desc=r.querySelector(".desc")?.value||"";
-
-let qty=Number(
-r.querySelector(".qty")?.value
-)||0;
-
-let rate=Number(
-r.querySelector(".rate")?.value
-)||0;
-
-let line=qty*rate;
-
-total+=line;
-
-let cell=r.querySelector(".lineTotal");
-
-if(cell)
-cell.innerText=line.toFixed(2);
-
-html+=`
-
-<tr>
-<td>${i+1}</td>
-<td>${desc}</td>
-<td>${qty}</td>
-<td>₹${rate.toFixed(2)}</td>
-<td>₹${line.toFixed(2)}</td>
+<th>विवरण</th>
+<th>मात्रा / राशि</th>
 </tr>
 
-`;
-
-});
-
-html+=`
-
 <tr>
-<td colspan="4">
-<strong>GRAND TOTAL</strong>
-</td>
-<td>
-<strong>₹${total.toFixed(2)}</strong>
-</td>
+<td>Primary Beneficiary</td>
+<td>${p}</td>
 </tr>
 
-</tbody>
+<tr>
+<td>Upper Primary Beneficiary</td>
+<td>${u}</td>
+</tr>
+
+<tr>
+<td>Fruit Beneficiary Student-Days</td>
+<td>${fruit}</td>
+</tr>
+
+<tr>
+<td>Available Material Cost</td>
+<td>₹${available.toFixed(2)}</td>
+</tr>
+
+<tr>
+<td>Pisai</td>
+<td>₹${pisai.toFixed(2)}</td>
+</tr>
+
+<tr>
+<td>Gas</td>
+<td>₹${gas.toFixed(2)}</td>
+</tr>
+
 </table>
-`;
 
-document.getElementById("previewTable").innerHTML=html;
-
-document.getElementById("previewSchool").innerText=
-document.getElementById("school").value;
-
-document.getElementById("previewBillNo").innerText=
-document.getElementById("billno").value;
-
-document.getElementById("previewDate").innerText=
-document.getElementById("billdate").value;
-
-document.getElementById("previewSupplier").innerText=
-document.getElementById("supplier").value;
-
-document.getElementById("previewSMC").innerText=
-document.getElementById("smc").value;
-
-return total;
-
-}
-
-
-function saveBill(){
-
-let data={
-
-school:document.getElementById("school").value,
-
-smc:document.getElementById("smc").value,
-
-billno:document.getElementById("billno").value,
-
-date:document.getElementById("billdate").value,
-
-supplier:document.getElementById("supplier").value,
-
-address:document.getElementById("address").value,
-
-items:[]
-
-};
-
-document
-.querySelectorAll("#billRows tr")
-.forEach(r=>{
-
-data.items.push({
-
-desc:r.querySelector(".desc")?.value||"",
-
-qty:r.querySelector(".qty")?.value||0,
-
-rate:r.querySelector(".rate")?.value||0
-
-});
-
-});
-
-
-let bills=
-JSON.parse(localStorage.getItem("shalamitraBills")||"[]");
-
-let index=bills.findIndex(
-x=>x.billno===data.billno
-);
-
-if(index>=0)
-bills[index]=data;
-else
-bills.push(data);
-
-localStorage.setItem(
-"shalamitraBills",
-JSON.stringify(bills)
-);
-
-alert("Bill 2026 save हो गया");
-
-}
-
-
-/* COOKING */
-
-function cookCalc(){
-
-let p=Number(
-document.getElementById("cp").value
-)||0;
-
-let u=Number(
-document.getElementById("cu").value
-)||0;
-
-let html="";
-
-INGREDIENTS.forEach(x=>{
-
-let item=x[0];
-
-let rate=x[1];
-
-let pv=(p*rate/2500);
-
-let uv=(u*rate/2500);
-
-html+=`
-
-<tr>
-
-<td>${item}</td>
-
-<td>${rate}</td>
-
-<td>${pv.toFixed(2)}</td>
-
-<td>${uv.toFixed(2)}</td>
-
-</tr>
-
-`;
-
-});
-
-document.getElementById("cookBody").innerHTML=html;
-
-}
-
-
-/* ENTRY */
-
-function getEntries(){
-
-return JSON.parse(
-localStorage.getItem("shalamitraEntries")||"[]"
-);
-
-}
-
-
-function addEntry(){
-
-let entry={
-
-date:document.getElementById("edate").value,
-
-type:document.getElementById("etype").value,
-
-head:document.getElementById("ehead").value,
-
-part:document.getElementById("epart").value,
-
-amount:Number(
-document.getElementById("eamount").value
-)||0,
-
-mode:document.getElementById("emode").value
-
-};
-
-let arr=getEntries();
-
-arr.push(entry);
-
-localStorage.setItem(
-"shalamitraEntries",
-JSON.stringify(arr)
-);
-
-showEntries();
-
-showCase();
-
-}
-
-
-function showEntries(){
-
-let arr=getEntries();
-
-let html="";
-
-arr.forEach((x,i)=>{
-
-html+=`
-
-<div class="saved">
-
-<strong>${x.type==="receipt"?"Receipt":"Payment"}</strong>
-
-<br>
-
-${x.date||""} |
-${x.head} |
-${x.part} |
-₹${x.amount.toFixed(2)} |
-${x.mode}
-
-<br><br>
-
-<button class="btn red"
-onclick="deleteEntry(${i})">
-Delete
-</button>
-
+<div class="status">
+<b>Step 4 में यहाँ final Excel वाली पूरी MDM calculation आएगी।</b>
 </div>
 
 `;
 
-});
-
-document.getElementById("entryList").innerHTML=
-html||"<p>No entries</p>";
-
 }
 
 
-function deleteEntry(i){
+/* ---------------------------
+   IMAGE COMMON
+---------------------------- */
 
-let arr=getEntries();
+function loadImage(file){
 
-arr.splice(i,1);
+return new Promise((resolve,reject)=>{
 
-localStorage.setItem(
-"shalamitraEntries",
-JSON.stringify(arr)
-);
+const img=new Image();
 
-showEntries();
+img.onload=()=>resolve(img);
 
-showCase();
+img.onerror=reject;
 
-}
-
-
-function clearEntries(){
-
-if(!confirm("सभी entries हटानी हैं?"))
-return;
-
-localStorage.removeItem(
-"shalamitraEntries"
-);
-
-showEntries();
-
-showCase();
-
-}
-
-
-/* CASE BOOK */
-
-function showCase(){
-
-let arr=getEntries();
-
-let credit=0;
-
-let debit=0;
-
-arr.forEach(x=>{
-
-if(x.type==="receipt")
-credit+=x.amount;
-
-else
-debit+=x.amount;
-
-});
-
-document.getElementById("creditTotal")
-.innerText=credit.toFixed(2);
-
-document.getElementById("debitTotal")
-.innerText=debit.toFixed(2);
-
-document.getElementById("balanceTotal")
-.innerText=(credit-debit).toFixed(2);
-
-let html="";
-
-arr.forEach(x=>{
-
-html+=`
-
-<div class="saved">
-
-${x.date||""} —
-${x.type==="receipt"?"CREDIT":"DEBIT"} —
-${x.head} —
-${x.part} —
-₹${x.amount.toFixed(2)}
-
-</div>
-
-`;
-
-});
-
-document.getElementById("caseList").innerHTML=html;
-
-}
-
-
-/* IMAGE */
-
-function imgLoad(f){
-
-return new Promise((ok,no)=>{
-
-let i=new Image();
-
-i.onload=()=>ok(i);
-
-i.onerror=no;
-
-i.src=URL.createObjectURL(f);
+img.src=URL.createObjectURL(file);
 
 });
 
 }
 
 
-function dl(blob,name){
+function downloadBlob(blob,name){
 
-let a=document.createElement("a");
+const url=
+URL.createObjectURL(blob);
 
-a.href=URL.createObjectURL(blob);
+const a=
+document.createElement("a");
 
+a.href=url;
 a.download=name;
+
+document.body.appendChild(a);
 
 a.click();
 
-}
+a.remove();
 
-
-async function compress(){
-
-let f=document.getElementById("img").files[0];
-
-if(!f)
-return alert("पहले image चुनें");
-
-let im=await imgLoad(f);
-
-let w=im.width;
-
-let h=im.height;
-
-let m=Number(
-document.getElementById("mw").value
-);
-
-if(w>m){
-
-h=Math.round(h*m/w);
-
-w=m;
-
-}
-
-let c=document.createElement("canvas");
-
-c.width=w;
-
-c.height=h;
-
-c.getContext("2d")
-.drawImage(im,0,0,w,h);
-
-let q=.85;
-
-let b=await new Promise(r=>
-c.toBlob(r,"image/jpeg",q)
-);
-
-let target=
-(Number(document.getElementById("kb").value)||100)
-*1024;
-
-while(b.size>target && q>.1){
-
-q-=.05;
-
-b=await new Promise(r=>
-c.toBlob(r,"image/jpeg",q)
-);
-
-}
-
-document.getElementById("istatus")
-.innerText=
-"New size: "+
-(b.size/1024).toFixed(1)+
-" KB";
-
-dl(b,"shalamitra-image.jpg");
+setTimeout(()=>{
+ URL.revokeObjectURL(url);
+},1000);
 
 }
 
 
-/* PASSPORT */
+/* ---------------------------
+   IMAGE COMPRESSOR
+---------------------------- */
 
-async function passport(){
+async function compressImage(){
 
-let f=
-document.getElementById("pass")
-.files[0];
+const file=
+document.getElementById("imageFile").files[0];
 
-if(!f)
-return alert("पहले photo चुनें");
+if(!file){
 
-let im=await imgLoad(f);
+alert("पहले image select करें");
 
-let w=Number(
-document.getElementById("pw").value
+return;
+
+}
+
+const target=
+(Number(
+document.getElementById("targetKB").value
+)||100)*1024;
+
+const maxWidth=
+Number(
+document.getElementById("maxWidth").value
+)||1600;
+
+const img=
+await loadImage(file);
+
+let w=img.width;
+let h=img.height;
+
+if(w>maxWidth){
+
+h=Math.round(h*maxWidth/w);
+
+w=maxWidth;
+
+}
+
+const canvas=
+document.createElement("canvas");
+
+canvas.width=w;
+canvas.height=h;
+
+canvas
+.getContext("2d")
+.drawImage(img,0,0,w,h);
+
+
+let quality=.85;
+
+let blob=
+await canvasToBlob(canvas,quality);
+
+
+while(
+blob.size>target &&
+quality>.1
+){
+
+quality-=.05;
+
+blob=
+await canvasToBlob(
+canvas,
+quality
 );
 
-let h=Number(
-document.getElementById("ph").value
+}
+
+
+document.getElementById("imageStatus")
+.innerHTML=
+`Original: ${(file.size/1024).toFixed(1)} KB
+<br>
+New: ${(blob.size/1024).toFixed(1)} KB
+<br>
+Quality: ${(quality*100).toFixed(0)}%`;
+
+
+downloadBlob(
+blob,
+"shalamitra-compressed.jpg"
 );
 
-let c=document.createElement("canvas");
+}
 
-c.width=w;
 
-c.height=h;
+function canvasToBlob(canvas,quality){
 
-let x=c.getContext("2d");
+return new Promise(resolve=>{
 
-let s=Math.max(
-w/im.width,
-h/im.height
+canvas.toBlob(
+blob=>resolve(blob),
+"image/jpeg",
+quality
 );
 
-let nw=im.width*s;
+});
 
-let nh=im.height*s;
+}
 
-x.drawImage(
-im,
+
+/* ---------------------------
+   IMAGE RESIZE
+---------------------------- */
+
+async function resizeImage(){
+
+const file=
+document.getElementById("resizeFile").files[0];
+
+if(!file){
+
+alert("पहले image select करें");
+
+return;
+
+}
+
+const img=
+await loadImage(file);
+
+const w=
+Number(
+document.getElementById("resizeWidth").value
+)||800;
+
+const h=
+Number(
+document.getElementById("resizeHeight").value
+)||600;
+
+const canvas=
+document.createElement("canvas");
+
+canvas.width=w;
+canvas.height=h;
+
+canvas
+.getContext("2d")
+.drawImage(img,0,0,w,h);
+
+const blob=
+await canvasToBlob(canvas,.92);
+
+downloadBlob(
+blob,
+"shalamitra-resized.jpg"
+);
+
+}
+
+
+/* ---------------------------
+   PASSPORT PHOTO
+---------------------------- */
+
+async function passportPhoto(){
+
+const file=
+document.getElementById("passportFile").files[0];
+
+if(!file){
+
+alert("पहले photo select करें");
+
+return;
+
+}
+
+const img=
+await loadImage(file);
+
+const w=
+Number(
+document.getElementById("passportWidth").value
+)||354;
+
+const h=
+Number(
+document.getElementById("passportHeight").value
+)||472;
+
+
+const canvas=
+document.createElement("canvas");
+
+canvas.width=w;
+canvas.height=h;
+
+const ctx=
+canvas.getContext("2d");
+
+
+const scale=
+Math.max(
+w/img.width,
+h/img.height
+);
+
+const nw=
+img.width*scale;
+
+const nh=
+img.height*scale;
+
+ctx.drawImage(
+img,
 (w-nw)/2,
 (h-nh)/2,
 nw,
 nh
 );
 
-c.toBlob(
-b=>dl(b,"passport-photo.jpg"),
-"image/jpeg",
+
+const blob=
+await canvasToBlob(
+canvas,
 .92
+);
+
+downloadBlob(
+blob,
+"shalamitra-passport-photo.jpg"
 );
 
 }
 
 
-/* DEFAULT DATE */
+/* ---------------------------
+   PDF PLACEHOLDER FUNCTIONS
+---------------------------- */
 
-document.getElementById("billdate")
-.value=new Date().toISOString().slice(0,10);
+function compressPDF(){
 
-document.getElementById("edate")
-.value=new Date().toISOString().slice(0,10);
+const file=
+document.getElementById("pdfCompressFile").files[0];
+
+if(!file){
+
+alert("पहले PDF select करें");
+
+return;
+
+}
+
+document.getElementById("pdfStatus").innerHTML=
+`
+<b>PDF selected:</b> ${file.name}
+<br>
+Size: ${(file.size/1024).toFixed(1)} KB
+<br><br>
+PDF compression engine Step 5 में जोड़ा जाएगा।
+`;
+
+}
 
 
-/* INITIAL */
+function mergePDF(){
 
-billTotal();
+const files=
+document.getElementById("pdfMergeFiles").files;
 
-cookCalc();
+if(!files.length){
 
-showEntries();
+alert("पहले PDF files select करें");
 
-showCase();
+return;
+
+}
+
+document.getElementById("pdfStatus").innerHTML=
+`
+<b>${files.length} PDF files selected.</b>
+<br><br>
+PDF Merge engine Step 5 में जोड़ा जाएगा।
+`;
+
+}
+
+
+function pdfToImage(){
+
+const file=
+document.getElementById("pdfImageFile").files[0];
+
+if(!file){
+
+alert("पहले PDF select करें");
+
+return;
+
+}
+
+document.getElementById("pdfStatus").innerHTML=
+`
+<b>PDF selected:</b> ${file.name}
+<br><br>
+PDF → Image engine Step 5 में जोड़ा जाएगा।
+`;
+
+}
+
+
+function imageToPDF(){
+
+const files=
+document.getElementById("imagePDFfiles").files;
+
+if(!files.length){
+
+alert("पहले images select करें");
+
+return;
+
+}
+
+document.getElementById("pdfStatus").innerHTML=
+`
+<b>${files.length} images selected.</b>
+<br><br>
+Image → PDF engine Step 5 में जोड़ा जाएगा।
+`;
+
+}
+
+
+/* ---------------------------
+   DEFAULT
+---------------------------- */
+
+calculateMDM();
 
 </script>
 
 </body>
-  </html>
+</html>
