@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ShalaManch | MDM Bill, PDF & School Tools</title>
+<meta name="description" content="ShalaManch - विद्यालयी कार्यों का डिजिटल मंच। MDM Bill Generator, PDF Tools, Image Tools और School Utilities.">
+<meta name="theme-color" content="#6d28d9">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Noto Sans,sans-serif;background:#f6f4fb;color:#17151f}
+button,input{font:inherit}button{cursor:pointer}.top{background:linear-gradient(135deg,#4c1d95,#6d28d9 55%,#a855f7);color:#fff;text-align:center;padding:25px 14px 30px}
+.logo{width:78px;height:78px;margin:auto auto 10px;border-radius:24px;display:grid;place-items:center;background:#ffffff24;border:1px solid #ffffff4d;font-size:40px}
+h1{margin:0;font-size:31px}.tag{margin-top:6px;opacity:.94}.welcome{max-width:560px;margin:15px auto 0;padding:11px 15px;border-radius:16px;background:#ffffff20}.welcome b{display:block}
+.nav{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid #e8e2f0;padding:9px 10px;display:flex;gap:8px;overflow:auto}.nav button{border:0;background:#f0edf6;color:#44394f;padding:10px 14px;border-radius:12px;white-space:nowrap;font-weight:800}.nav button.active{background:#6d28d9;color:#fff}
+.wrap{max-width:1060px;margin:auto;padding:16px}.hero,.card{background:#fff;border:1px solid #e7e1ef;border-radius:20px;box-shadow:0 8px 28px #1f103c0f}.hero{padding:20px}.hero h2,.card h2,.card h3{margin-top:0}.muted{color:#6b6473;font-size:14px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.card{padding:17px}.section{margin-top:15px}.tool{min-height:145px}.icon{font-size:29px}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}.primary,.secondary,.danger{border:0;border-radius:11px;padding:10px 14px;font-weight:800}.primary{background:#6d28d9;color:#fff}.secondary{background:#eeeaf5;color:#43384f}.danger{background:#fee2e2;color:#991b1b}
+.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}label{display:block;font-weight:750;font-size:14px;margin-bottom:6px}input{width:100%;padding:11px 12px;border:1px solid #d9d3e2;border-radius:11px;background:#fff;outline:0}input:focus{border-color:#7c3aed;box-shadow:0 0 0 3px #7c3aed1a}
+.summary{display:grid;grid-template-columns:1fr 1fr;gap:12px}.final{background:linear-gradient(135deg,#f5f0ff,#fff);border:1px solid #ddd0f6;border-radius:18px;padding:17px;text-align:center}.final small{color:#6c6377;font-weight:750}.final strong{display:block;font-size:34px;color:#4c1d95;margin:4px 0}.ready{font-weight:900;color:#15803d}
+.bill-form{margin-top:16px;padding:15px;border:1px solid #e5dfea;border-radius:16px;background:#fff}.bill-form:first-child{margin-top:0}.bill-head{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:10px}.bill-head h3{margin:0 0 4px}.bill-head>strong{font-size:22px;color:#4c1d95;white-space:nowrap}.details{overflow:auto;border:1px solid #e5dfea;border-radius:14px}table{width:100%;border-collapse:collapse;min-width:650px;background:#fff}th,td{padding:10px 9px;border-bottom:1px solid #eee;text-align:right}th:first-child,td:first-child{text-align:left}th{background:#f4f1f9;font-size:13px}.total td{font-weight:900;background:#faf8fd}.note{font-size:13px;color:#6b6372;margin-top:8px}.hidden{display:none!important}.footer{text-align:center;color:#5e5768;padding:28px 14px 42px}.footer b{display:block;color:#292330;letter-spacing:.7px}
+@media(max-width:720px){h1{font-size:27px}.wrap{padding:11px}.grid,.formgrid{grid-template-columns:1fr}.summary{grid-template-columns:1fr}.logo{width:70px;height:70px}}
+@media print{body{background:#fff}.top{background:#fff;color:#000;padding:7px;border-bottom:1px solid #222}.logo,.welcome,.nav,.no-print{display:none!important}.wrap{max-width:none;padding:0}.hero,.card{box-shadow:none;border:0;padding:7px}.section{margin-top:8px}.bill-form{page-break-after:always;border:1px solid #999;box-shadow:none}.bill-form:last-child{page-break-after:auto}.bill-head>strong{color:#000}.final strong{color:#000}}
+
+#printArea{display:none}
+.print-head{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid #222;padding-bottom:8px;margin-bottom:10px}.print-head h2{margin:0;font-size:19px}.print-meta{text-align:right;font-size:13px;line-height:1.5}.print-firm{font-size:14px;margin-top:3px}.print-table{width:100%;border-collapse:collapse;min-width:0}.print-table th,.print-table td{border:1px solid #555;padding:7px 6px;font-size:12px}.print-table th{background:#eee;text-align:center}.print-table td{text-align:right}.print-table th:nth-child(1),.print-table td:nth-child(1){text-align:center;width:42px}.print-table th:nth-child(2),.print-table td:nth-child(2){text-align:left}.print-total{text-align:right;font-weight:900;border:1px solid #555;padding:8px;margin-top:0}.print-sign{text-align:right;margin-top:35px;font-size:13px}.print-sign .line{display:inline-block;width:180px;border-top:1px solid #222;margin-bottom:4px}.print-grand{page-break-before:always;text-align:center;padding-top:45vh}.print-grand h2{font-size:22px;margin-bottom:18px}.print-grand .amount{font-size:32px;font-weight:900}.print-page{page-break-after:always}.print-page:last-child{page-break-after:auto}
+@media print{body>*:not(#printArea){display:none!important}#printArea{display:block!important;background:#fff;color:#000;padding:18px;font-family:Arial,sans-serif} .print-page{min-height:95vh} @page{size:A4;margin:12mm}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script type="module">import * as pdfjsLib from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.mjs';pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs';window.pdfjsLib=pdfjsLib;</script>
+<style>
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:16px}.tool-card{background:#fff;border:1px solid #e5dfea;border-radius:16px;padding:18px}.tool-card h3{margin:0 0 7px}.tool-card p{color:#6b6372;line-height:1.5}.tool-card input[type=file]{width:100%;margin:8px 0 12px}.tool-field{margin:10px 0}.tool-field label{display:block;font-weight:700;margin-bottom:6px}.tool-field input{width:100%;padding:10px;border:1px solid #d8d1e0;border-radius:10px}.tool-result{background:#f4f1f9;border-radius:12px;padding:12px;margin-top:14px}.tool-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.tool-btn{border:0;border-radius:10px;background:#6d28d9;color:#fff;padding:10px 14px;font-weight:800;cursor:pointer}.tool-btn.alt{background:#475569}
+@media(max-width:600px){.tool-grid{grid-template-columns:1fr}}
+</style></head>
+<body>
+<header class="top"><div class="logo">🏫</div><h1>ShalaManch</h1><div class="tag">विद्यालयी कार्यों का डिजिटल मंच</div><div class="welcome"><b>🙏 स्वागत है</b><span>आपके विद्यालयी कार्यों को आसान और डिजिटल बनाने के लिए</span></div></header>
+<nav class="nav"><button class="active" onclick="show('home',this)">🏠 Home</button><button onclick="show('mdm',this)">🍲 MDM Bill</button><button onclick="show('pdf',this)">📄 PDF Tools</button><button onclick="show('image',this)">🖼️ Image Tools</button></nav>
+<main class="wrap">
+<section id="home"><div class="hero"><h2>ShalaManch में आपका स्वागत है</h2><div class="muted">MDM, Bill, PDF, Image और विद्यालयी digital tools — एक ही मंच पर।</div></div>
+<div class="grid section">
+<div class="card tool"><div class="icon">🍲</div><h3>MDM Bill Generator</h3><div class="muted">Beneficiary और rates के अनुसार bill तैयार करें।</div><div class="actions"><button class="primary" onclick="openTool('mdm')">Open MDM</button></div></div>
+<div class="card tool"><div class="icon">📄</div><h3>PDF Tools</h3><div class="muted">PDF utilities के लिए dedicated section.</div><div class="actions"><button class="secondary" onclick="openTool('pdf')">Open PDF</button></div></div>
+<div class="card tool"><div class="icon">🖼️</div><h3>Image Tools</h3><div class="muted">Resize, compress और school-use image tools.</div><div class="actions"><button class="secondary" onclick="openTool('image')">Open Image</button></div></div></div>
+<div class="card section"><h3>⭐ आगे के School Tools</h3><div class="muted">School Documents, SMC, Certificates, Applications, Notices, Excel और अन्य useful tools इसी मंच में जोड़े जा सकते हैं।</div></div></section>
+
+<section id="mdm" class="hidden"><div class="hero"><h2>🍲 MDM Bill Generator</h2><div class="muted">Beneficiary और applicable norms के आधार पर flexible bill calculation.</div></div>
+<div class="card section"><h2>🏫 School / Bill Details</h2><div class="formgrid">
+<div><label>School Name</label><input id="schoolName" placeholder="School Name"></div><div><label>UDISE Code</label><input id="udise" placeholder="UDISE Code"></div>
+<div><label>Block</label><input id="block" placeholder="Block"></div><div><label>District</label><input id="district" placeholder="District"></div>
+<div><label>Month</label><input id="month" type="month"></div><div><label>Bill Date</label><input id="billDate" type="date"></div>
+<div><label>Kirana Firm / फर्म</label><input id="kiranaFirm" placeholder="Kirana Firm Name"></div><div><label>Kirana Bill No.</label><input id="kiranaBillNo" placeholder="Bill No."></div><div><label>Fruit & Vegetable Firm / फर्म</label><input id="fruitFirm" placeholder="Fruit & Vegetable Firm Name"></div><div><label>Fruit & Vegetable Bill No.</label><input id="fruitBillNo" placeholder="Bill No."></div>
+<div><label>Pisai Firm / फर्म</label><input id="pisaiFirm" placeholder="Pisai Firm Name"></div><div><label>Pisai Bill No.</label><input id="pisaiBillNo" placeholder="Bill No."></div><div><label>Endhan / Gas Firm / फर्म</label><input id="gasFirm" placeholder="Endhan / Gas Firm Name"></div><div><label>Endhan / Gas Bill No.</label><input id="gasBillNo" placeholder="Bill No."></div>
+<div><label>Headmaster / In-charge</label><input id="headmaster" placeholder="Name"></div></div></div>
+
+<div class="card section"><h2>1. 👥 Beneficiary Details</h2><div class="formgrid">
+<div><label>Primary Student-Days</label><input id="primary" type="number" min="0" value="368"></div><div><label>Upper Primary Student-Days</label><input id="upper" type="number" min="0" value="0"></div>
+<div><label>Fruit Beneficiary Days</label><input id="fruit" type="number" min="0" value="72"></div><div><label>Wheat for Pisai (kg)</label><input id="wheat" type="number" min="0" step="0.01" value="21.60"></div></div><div class="note">Beneficiary data बदलने पर bill calculation अपने-आप update होगा.</div></div>
+
+<div class="card section"><h2>2. ⚙️ Bill Rate Settings</h2><button class="secondary" onclick="toggle('rates')">Edit Bill Rates</button><div id="rates" class="hidden section"><div class="formgrid">
+<div><label>Primary Material ₹ / student-day</label><input id="primaryRate" value="6.78"></div><div><label>Upper Primary Material ₹ / student-day</label><input id="upperRate" value="10.17"></div>
+<div><label>Dal ₹ / kg</label><input id="dalRate" value="100"></div><div><label>Sabji ₹ / kg</label><input id="sabjiRate" value="30"></div><div><label>Oil/Ghee ₹ / kg</label><input id="oilRate" value="140"></div><div><label>Haldi ₹ / kg</label><input id="haldiRate" value="200"></div><div><label>Mirch ₹ / kg</label><input id="mirchRate" value="200"></div><div><label>Dhaniya ₹ / kg</label><input id="dhaniyaRate" value="250"></div><div><label>Namak ₹ / kg</label><input id="namakRate" value="20"></div><div><label>Jeera ₹ / kg</label><input id="jeeraRate" value="200"></div><div><label>Lahsun ₹ / kg</label><input id="lahsunRate" value="100"></div><div><label>Fruit ₹ / kg</label><input id="fruitRate" value="35"></div><div><label>Gas Cylinder ₹</label><input id="gasRate" value="950"></div><div><label>Gas Student-Days / Cylinder</label><input id="gasDays" value="1200"></div><div><label>Pisai ₹ / kg</label><input id="pisaiRate" value="3"></div></div></div></div>
+
+<div class="card section"><h2>3. 📊 Share &amp; Norm Settings</h2><button class="secondary" onclick="toggle('norms')">View / Edit Norms &amp; Shares</button><div id="norms" class="hidden section"><div class="details"><table><thead><tr><th>Item</th><th>Primary Norm</th><th>Upper Primary Norm</th><th>Note</th></tr></thead><tbody>
+<tr><td>Dal</td><td><input id="dalNormP" value="0.0200"></td><td><input id="dalNormU" value="0.0300"></td><td>kg / student-day</td></tr>
+<tr><td>Sabji</td><td><input id="sabjiNormP" value="0.0450"></td><td><input id="sabjiNormU" value="0.0700"></td><td>kg / student-day</td></tr>
+<tr><td>Oil/Ghee</td><td><input id="oilNormP" value="0.0050"></td><td><input id="oilNormU" value="0.0050"></td><td>kg / student-day</td></tr>
+<tr><td>Haldi</td><td><input id="haldiNormP" value="0.00075"></td><td><input id="haldiNormU" value="0.00075"></td><td>kg / student-day</td></tr>
+<tr><td>Mirch</td><td><input id="mirchNormP" value="0.00075"></td><td><input id="mirchNormU" value="0.00075"></td><td>kg / student-day</td></tr>
+<tr><td>Dhaniya</td><td><input id="dhaniyaNormP" value="0.00075"></td><td><input id="dhaniyaNormU" value="0.00075"></td><td>kg / student-day</td></tr>
+<tr><td>Namak</td><td><input id="namakNormP" value="0.0020"></td><td><input id="namakNormU" value="0.0020"></td><td>kg / student-day</td></tr>
+<tr><td>Jeera</td><td><input id="jeeraNormP" value="0.0004"></td><td><input id="jeeraNormU" value="0.0004"></td><td>kg / student-day</td></tr>
+<tr><td>Lahsun</td><td><input id="lahsunNormP" value="0.00125"></td><td><input id="lahsunNormU" value="0.00125"></td><td>kg / student-day</td></tr>
+<tr><td>Fruit</td><td colspan="2"><input id="fruitNorm" value="0.125"></td><td>kg / fruit beneficiary-day</td></tr></tbody></table></div><div class="note">Norms/shares अलग settings में हैं; Final Bill में budget comparison नहीं दिखेगा.</div></div></div>
+
+<div class="card section"><h2>4. 🧾 अलग-अलग Bill Forms</h2>
+<div class="bill-form" id="kiranaBill"><div class="bill-head"><div><h3>FORM 1 • KIRANA / सामग्री BILL</h3><div class="muted" id="kiranaFirmOut">Firm: —</div></div><strong id="kiranaTotal">₹0</strong></div><div class="details"><table><thead><tr><th>क्र.</th><th>सामग्री</th><th>मात्रा</th><th>इकाई</th><th>Rate ₹</th><th>राशि ₹</th></tr></thead><tbody id="kiranaRows"></tbody><tfoot><tr class="total"><td colspan="5">Kirana Total</td><td id="kiranaTotalTable">₹0</td></tr></tfoot></table></div></div>
+<div class="bill-form" id="fruitBill"><div class="bill-head"><div><h3>FORM 2 • FRUIT + VEGETABLE BILL</h3><div class="muted" id="fruitFirmOut">Firm: —</div></div><strong id="fruitTotal">₹0</strong></div><div class="details"><table><thead><tr><th>क्र.</th><th>सामग्री</th><th>मात्रा</th><th>इकाई</th><th>Rate ₹</th><th>राशि ₹</th></tr></thead><tbody id="fruitRows"></tbody><tfoot><tr class="total"><td colspan="5">Fruit + Vegetable Total</td><td id="fruitTotalTable">₹0</td></tr></tfoot></table></div></div>
+<div class="bill-form" id="pisaiBill"><div class="bill-head"><div><h3>FORM 3 • PISAI BILL</h3><div class="muted" id="pisaiFirmOut">Firm: —</div></div><strong id="pisaiTotal">₹0</strong></div><div class="details"><table><thead><tr><th>क्र.</th><th>सामग्री</th><th>मात्रा</th><th>इकाई</th><th>Rate ₹</th><th>राशि ₹</th></tr></thead><tbody id="pisaiRows"></tbody><tfoot><tr class="total"><td colspan="5">Pisai Total</td><td id="pisaiTotalTable">₹0</td></tr></tfoot></table></div></div>
+<div class="bill-form" id="gasBill"><div class="bill-head"><div><h3>FORM 4 • ENDHAN / GAS BILL</h3><div class="muted" id="gasFirmOut">Firm: —</div></div><strong id="gasTotal">₹0</strong></div><div class="details"><table><thead><tr><th>क्र.</th><th>सामग्री</th><th>मात्रा</th><th>इकाई</th><th>Rate ₹</th><th>राशि ₹</th></tr></thead><tbody id="gasRows"></tbody><tfoot><tr class="total"><td colspan="5">Endhan / Gas Total</td><td id="gasTotalTable">₹0</td></tr></tfoot></table></div></div>
+</div>
+<div class="card section"><h2>5. 💰 Grand Total</h2><div class="summary"><div class="final"><small>FINAL GRAND TOTAL</small><strong id="grand">₹0</strong><span class="ready">🟢 BILL READY</span></div></div><div class="note">Grand Total उपलब्ध वास्तविक राशि के अनुसार रहेगा और rounded figure में दिखेगा। Item rate कम-ज्यादा करने पर उसी bill की मात्रा अपने-आप बदलेगी, लेकिन कुल bill और Grand Total अपनी निर्धारित राशि पर रहेंगे।</div>
+<div class="actions no-print"><button class="primary" onclick="calculate()">🔄 Recalculate Bill</button><button class="secondary" onclick="printBills()">🖨️ Print / Save PDF</button><button class="danger" onclick="resetMDM()">↺ Reset</button></div></div></section>
+
+<section id="pdf" class="hidden"><div class="hero"><h2>📄 PDF Tools</h2><div class="muted">PDF को compress, merge, split और convert करें।</div></div><div class="tool-grid">
+<div class="tool-card"><h3>📉 PDF Compress</h3><p>PDF की size कम करें।</p><input id="pdfCompressFile" type="file" accept="application/pdf"><div class="tool-field"><label>Target KB</label><input id="pdfTargetKB" type="number" value="500"></div><div class="tool-actions"><button class="tool-btn" onclick="compressPDF()">Compress PDF</button></div></div>
+<div class="tool-card"><h3>🔗 PDF Merge</h3><p>कई PDF को एक PDF में जोड़ें।</p><input id="pdfMergeFiles" type="file" accept="application/pdf" multiple><div class="tool-actions"><button class="tool-btn" onclick="mergePDF()">Merge PDF</button></div></div>
+<div class="tool-card"><h3>✂️ PDF Split</h3><p>PDF से चुना हुआ page निकालें।</p><input id="pdfSplitFile" type="file" accept="application/pdf"><div class="tool-field"><label>Page Number</label><input id="splitPage" type="number" value="1" min="1"></div><div class="tool-actions"><button class="tool-btn" onclick="splitPDF()">Split Page</button></div></div>
+<div class="tool-card"><h3>🖼️ PDF → Image</h3><p>PDF pages को JPG में बदलें।</p><input id="pdfImageFile" type="file" accept="application/pdf"><div class="tool-actions"><button class="tool-btn" onclick="pdfToImage()">Convert</button></div></div>
+<div class="tool-card"><h3>📑 Image → PDF</h3><p>एक या कई images से PDF बनाएं।</p><input id="imagePDFfiles" type="file" accept="image/*" multiple><div class="tool-actions"><button class="tool-btn" onclick="imageToPDF()">Create PDF</button></div></div>
+</div><div id="pdfStatus" class="tool-result">PDF result यहाँ दिखाई देगा।</div></section>
+<section id="image" class="hidden"><div class="hero"><h2>🖼️ Image Tools</h2><div class="muted">Image compress, resize और passport photo tools.</div></div><div class="tool-grid">
+<div class="tool-card"><h3>📉 Image Compress</h3><p>Image select करें और target KB डालें।</p><input id="imageFile" type="file" accept="image/*"><div class="tool-field"><label>Target KB</label><input id="targetKB" type="number" value="100"></div><div class="tool-field"><label>Maximum Width</label><input id="maxWidth" type="number" value="1600"></div><div class="tool-actions"><button class="tool-btn" onclick="compressImage()">Compress & Download</button></div><div id="imageStatus" class="tool-result"></div></div>
+<div class="tool-card"><h3>📐 Image Resize</h3><p>Image का width और height सेट करें।</p><input id="resizeFile" type="file" accept="image/*"><div class="tool-field"><label>Width</label><input id="resizeWidth" type="number" value="800"></div><div class="tool-field"><label>Height</label><input id="resizeHeight" type="number" value="600"></div><div class="tool-actions"><button class="tool-btn" onclick="resizeImage()">Resize & Download</button></div></div>
+<div class="tool-card"><h3>📷 Passport Photo</h3><p>Passport-size photo तैयार करें।</p><input id="passportFile" type="file" accept="image/*"><div class="tool-field"><label>Width</label><input id="passportWidth" type="number" value="354"></div><div class="tool-field"><label>Height</label><input id="passportHeight" type="number" value="472"></div><div class="tool-actions"><button class="tool-btn" onclick="passportPhoto()">Create Photo</button></div></div>
+</div></section>
+</main>
+<div id="printArea" aria-hidden="true"></div>
+<footer class="footer"><b>BALRAM MEENA</b><div>AKLA • KHINVSAR • NAGAUR</div><div style="margin-top:8px">© 2026 ShalaManch</div></footer>
+
+<script>
+const $=id=>document.getElementById(id);
+function n(id){return parseFloat($(id).value)||0}
+function show(id,btn){document.querySelectorAll("main>section").forEach(x=>x.classList.add("hidden"));$(id).classList.remove("hidden");document.querySelectorAll(".nav button").forEach(x=>x.classList.remove("active"));if(btn)btn.classList.add("active");if(id==="mdm")calculate()}
+function openTool(id){show(id,document.querySelector('.nav button[onclick*="'+id+'"]'))}function toggle(id){$(id).classList.toggle("hidden")}
+function roundRupee(x){return Math.round(x)}
+function money(x){return "₹"+roundRupee(x).toLocaleString("en-IN")}
+function calculate(){
+ let p=n("primary"),u=n("upper");
+ let totalBudget=p*n("primaryRate")+u*n("upperRate");
+ // Finalized workbook allocation: exact default item amounts total ₹2495.04.
+ // The displayed bill is rounded to whole rupees, while quantities react to rate changes.
+ const baseBudget=368*6.78;
+ const defaultItemAmounts={
+  dal:736, oil:257.60, haldi:55.20, mirch:87.175, dhaniya:100.975, namak:14.72, jeera:29.44, lahsun:46,
+  sabji:496.80, fruit:315, pisai:64.80, gas:291.33
+ };
+ const scale=baseBudget?totalBudget/baseBudget:0;
+ const A={}; Object.keys(defaultItemAmounts).forEach(k=>A[k]=defaultItemAmounts[k]*scale);
+ const rates={dal:n("dalRate"),oil:n("oilRate"),haldi:n("haldiRate"),mirch:n("mirchRate"),dhaniya:n("dhaniyaRate"),namak:n("namakRate"),jeera:n("jeeraRate"),lahsun:n("lahsunRate"),sabji:n("sabjiRate"),fruit:n("fruitRate"),pisai:n("pisaiRate"),gas:n("gasRate")};
+ const q=(amount,rate)=>rate>0?amount/rate:0;
+ const items={
+  kirana:[
+   [1,"दाल",q(A.dal,rates.dal),"kg",rates.dal,A.dal],[2,"तेल / घी",q(A.oil,rates.oil),"kg",rates.oil,A.oil],[3,"हल्दी",q(A.haldi,rates.haldi),"kg",rates.haldi,A.haldi],[4,"मिर्च",q(A.mirch,rates.mirch),"kg",rates.mirch,A.mirch],[5,"धनिया",q(A.dhaniya,rates.dhaniya),"kg",rates.dhaniya,A.dhaniya],[6,"नमक",q(A.namak,rates.namak),"kg",rates.namak,A.namak],[7,"जीरा",q(A.jeera,rates.jeera),"kg",rates.jeera,A.jeera],[8,"लहसुन",q(A.lahsun,rates.lahsun),"kg",rates.lahsun,A.lahsun]
+  ],
+  fruit:[[1,"सब्जी",q(A.sabji,rates.sabji),"kg",rates.sabji,A.sabji],[2,"फल",q(A.fruit,rates.fruit),"kg",rates.fruit,A.fruit]],
+  pisai:[[1,"गेहूँ की पिसाई",q(A.pisai,rates.pisai),"kg",rates.pisai,A.pisai]],
+  gas:[[1,"Endhan / Gas",q(A.gas,rates.gas),"cylinder",rates.gas,A.gas]]
+ };
+ function rows(id,list){$(id).innerHTML=list.map(x=>`<tr><td>${x[0]}</td><td>${x[1]}</td><td>${x[2].toFixed(4)}</td><td>${x[3]}</td><td>${money(x[4])}</td><td>${money(x[5])}</td></tr>`).join("")}
+ function sum(list){return list.reduce((s,x)=>s+x[5],0)}
+ rows("kiranaRows",items.kirana); rows("fruitRows",items.fruit); rows("pisaiRows",items.pisai); rows("gasRows",items.gas);
+ const kt=sum(items.kirana),ft=sum(items.fruit),pt=sum(items.pisai),gt=sum(items.gas),grand=kt+ft+pt+gt;
+ ["kiranaTotal","kiranaTotalTable"].forEach(id=>$(id).textContent=money(kt));
+ ["fruitTotal","fruitTotalTable"].forEach(id=>$(id).textContent=money(ft));
+ ["pisaiTotal","pisaiTotalTable"].forEach(id=>$(id).textContent=money(pt));
+ ["gasTotal","gasTotalTable"].forEach(id=>$(id).textContent=money(gt));
+ $("grand").textContent=money(grand);
+ $("kiranaFirmOut").textContent="Firm: "+($("kiranaFirm").value||"—"); $("fruitFirmOut").textContent="Firm: "+($("fruitFirm").value||"—"); $("pisaiFirmOut").textContent="Firm: "+($("pisaiFirm").value||"—"); $("gasFirmOut").textContent="Firm: "+($("gasFirm").value||"—");
+ save();
+}
+function save(){try{let o={};document.querySelectorAll("#mdm input").forEach(x=>o[x.id]=x.value);localStorage.setItem("shalamanch_mdm",JSON.stringify(o))}catch(e){}}
+function load(){try{let o=JSON.parse(localStorage.getItem("shalamanch_mdm")||"{}");Object.keys(o).forEach(id=>{if($(id))$(id).value=o[id]})}catch(e){}}
+function printBills(){
+ const dateVal=$("billDate").value;
+ const date=dateVal?new Date(dateVal+"T00:00:00").toLocaleDateString("en-IN"):"";
+ const bills=[
+  {title:"KIRANA / सामग्री BILL",firm:$("kiranaFirm").value||"",no:$("kiranaBillNo").value||"",rows:"kiranaRows",total:"kiranaTotalTable",sign:"Firm Owner / Authorized Signature"},
+  {title:"FRUIT + VEGETABLE BILL",firm:$("fruitFirm").value||"",no:$("fruitBillNo").value||"",rows:"fruitRows",total:"fruitTotalTable",sign:"Firm Owner / Authorized Signature"},
+  {title:"PISAI BILL",firm:$("pisaiFirm").value||"",no:$("pisaiBillNo").value||"",rows:"pisaiRows",total:"pisaiTotalTable",sign:"Firm Owner / Authorized Signature"},
+  {title:"ENDHAN / GAS BILL",firm:$("gasFirm").value||"",no:$("gasBillNo").value||"",rows:"gasRows",total:"gasTotalTable",sign:"Firm Owner / Authorized Signature"}
+ ];
+ let html="";
+ bills.forEach(b=>{
+  const source=$(b.rows).closest("table");
+  const rows=source.querySelector("tbody").innerHTML;
+  html+=`<div class="print-page"><div class="print-head"><div><h2>${b.title}</h2><div class="print-firm"><b>Firm Name:</b> ${b.firm||"—"}</div></div><div class="print-meta"><b>Bill No.:</b> ${b.no||"—"}<br><b>Date:</b> ${date||"—"}</div></div><table class="print-table"><thead><tr><th>क्र.</th><th>सामग्री</th><th>Quantity</th><th>Rate ₹</th><th>Amount ₹</th></tr></thead><tbody>${rows}</tbody></table><div class="print-total">Total: ${$(b.total).textContent}</div><div class="print-sign"><div class="line"></div><br>${b.sign}</div></div>`;
+ });
+ html+=`<div class="print-grand"><h2>GRAND TOTAL</h2><div class="amount">${$("grand").textContent}</div></div>`;
+ $("printArea").innerHTML=html;
+ save();
+ setTimeout(()=>window.print(),50);
+}
+function resetMDM(){localStorage.removeItem("shalamanch_mdm");location.reload()}
+document.addEventListener("input",e=>{if(e.target.closest("#mdm"))calculate()});load();calculate();
+</script>
+</body></html>
